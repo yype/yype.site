@@ -1,11 +1,11 @@
-site: Sidey
-url: #yoururl
-title: Sidey
-description: Simple and minimalistic jekyll blogging theme.
+site: yype's site
+url: https://yype.site
+title: yype.site
+description: logs that belong to yype
 twitter:
-  username: #yourusername
+  username: _yype
   card: summary
-  creator: #yourusername
+  creator: _yype
 author:
   twitter: #yourusername
   name: #yourusername

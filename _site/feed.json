@@ -1,9 +1,9 @@
 {
     "version": "https://jsonfeed.org/version/1",
-    "title": "Sidey",
+    "title": "yype.site",
     "home_page_url": "http://localhost:4000/",
     "feed_url": "http://localhost:4000/feed.json",
-    "description": "Simple and minimalistic jekyll blogging theme.",
+    "description": "logs that belong to yype",
     "icon": "http://localhost:4000/apple-touch-icon.png",
     "favicon": "http://localhost:4000/favicon.ico",
     "expired": false,
@@ -22,7 +22,7 @@
             
             
             
-            
+            "tags": ["css","foo"],
             
             "date_published": "2020-05-12T00:00:00+08:00",
             "date_modified": "2020-05-12T00:00:00+08:00",
