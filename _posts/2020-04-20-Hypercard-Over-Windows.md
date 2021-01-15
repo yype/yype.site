@@ -1,6 +1,6 @@
 ---
 layout: post
-title: PlaidCTF2020 Hypercard Chal Write-up
+title: PlaidCTF2020 The Watness 2 Write-up
 description: 
 summary: 
 tags: [Write-up, Reverse Engineering, Hypercard, PlaidCTF, PlaidCTF2020]
@@ -16,19 +16,19 @@ Recently in PlaidCTF2020 there was a challenge called *The Watness 2*, which is 
 
 - Download [StuffitExpander](https://www.macintoshrepository.org/2475-stuffit-expander-and-dropstuff-5-5), add it to the volumes' list, install it inside the VM:
 
-  ![1587369699146](HypercardOverWindows/1587369699146.png)
+  ![1587369699146]({{ site.github.url }}/assets/HypercardOverWindows/1587369699146.png)
 
 - Download [HyperCard 2.4](https://macintoshgarden.org/apps/hypercard-241), install it inside the VM as described above
 
 - Extract the .rc1 file from the .sit file and open it with a simple double-click:
 
-  ![1587369949569](HypercardOverWindows/1587369949569.png)
+  ![1587369949569]({{ site.github.url }}/assets/HypercardOverWindows/1587369949569.png)
 
 ### Challenge Solution
 
 Extract the stack's script code:
 
-![1587389434804](HypercardOverWindows/1587389434804.png)
+![1587389434804]({{ site.github.url }}/assets/HypercardOverWindows/1587389434804.png)
 
 ```
 on openCard
@@ -529,7 +529,7 @@ Now we get the constraint string of this puzzle `"rbrr rgb rb  r brgrbrgb  grrgb
 
 What's more, I found that I can set breakpoints in the script and debug the game, I could even watch the variables on the fly:
 
-![1588514193878](HypercardOverWindows/1588514193878.png)
+![1588514193878]({{ site.github.url }}/assets/HypercardOverWindows/1588514193878.png)
 
 As for the XCMD part, it's basically just a few hours' reversing work. There are no reliable decompilers for the 68k architecture so I have to read the assembly. It wasn't too hard, but I did spend several hours learning the basic concepts of the 68k's instruction set though.
 
@@ -715,5 +715,5 @@ Path DRDDDDRUURRRULURRDDDDDDR is ok
 
 Input these solutions to each puzzle, after that, we could go to the lock-like thing on the white gate to reveal the flag:
 
-![1588514105474](HypercardOverWindows/1588514105474.png)
+![1588514105474]({{ site.github.url }}/assets/HypercardOverWindows/1588514105474.png)
 
