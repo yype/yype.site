@@ -2,11 +2,15 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://localhost:4000/about</loc>
-<lastmod>2021-01-15T23:03:21+08:00</lastmod>
+<lastmod>2021-01-16T00:24:46+08:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/search</loc>
-<lastmod>2021-01-15T23:03:21+08:00</lastmod>
+<lastmod>2021-01-16T00:24:46+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/2020/03/12/cache-coherence%E4%B8%AD%E7%9A%84write-invalid</loc>
+<lastmod>2020-03-12T00:00:00+08:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/2020/04/20/hypercard-over-windows</loc>
@@ -14,6 +18,18 @@
 </url>
 <url>
 <loc>http://localhost:4000/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tag/distributed%20computing/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tag/cache%20coherence/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tag/write-invalid/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tag/class%20notes/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/tag/Write-up/</loc>

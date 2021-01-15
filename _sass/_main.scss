@@ -70,8 +70,28 @@ img {
 hr {
 	background: #000;
     height: 1px;
-    border: 0;
+	border: 0;
+	opacity: 0.2;
 }
+
+> ol, > ul, > dl {
+    padding-left: 2rem;
+    li+li {
+	  margin-top: 0.3rem;
+    }
+  }
+  li {
+    > ol, > ul, > dl { // sub list
+      padding-left: 2rem;
+    }
+    > p {
+      margin: 1rem 0 0.8rem;
+    }
+  }
+
+  ul {
+    padding-inline-start: 1.3rem;
+  }
 
 header {
 	flex-basis:10rem;

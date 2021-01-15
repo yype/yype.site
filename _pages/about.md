@@ -1,28 +1,27 @@
 ---
 layout: page
-title: About
+title: Yupeng Yang
 ---
 
-Sidey is a simple and minimalistic jekyll blogging theme.
+### Security Researcher (Newbie)
 
-### Features
+My research interests include system security, software security, software analysis and vulunerablity discovery.
 
-- Responsive design
-- Inline CSS
-- Anchor headings
-- Search
-- Tags & tag pages
-- Security headers (for Netlify hosting)
-- 404 page
-- Compressed CSS and HTML
-- 100/100 score on Lighthouse, Page Speed Insights & Webpagetest
-- Robots.txt
-- Atom & Json feeds
-- Sass
-- Seo optimized (Twitter cards, Facebook Open Graph, Schema.org)
-- Ultra fast (Only ~5kb of CSS)
-- Sidebar navigation
+#### Publications
 
-### Screenshot
+- One Engine to Fuzz 'em All: Generic Language Processor Testing with Semantic Validation (to appear)
+  Yongheng Chen, Rui Zhong(co-first author), Hong Hu, Hangfan Zhang, Yupeng Yang, Dinghao Wu and Wenke Lee.
+  In Proceedings of the 41st IEEE Symposium on Security and Privacy (Oakland 2021).
 
-![Screenshot](screenshot.png)
+### CTF Player
+
+I've participated in a lot of CTFs. I am currently a member of Nu1L Team and CNSS. I mainly solve reverse engineering challenges when playing CTFs.
+
+### Contact
+
+Please feel free to contact me if you have anything to share or ask :)
+
+- EMail: yype@foxmail.com
+- Twitter: https://twitter.com/_yype
+- GitHub: https://github.com/yype
+
