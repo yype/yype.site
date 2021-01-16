@@ -15,13 +15,13 @@ My research interests include system security, software security, software analy
 
 ### CTF Player
 
-I've participated in a lot of CTF competitions. I am currently a member of [Nu1L Team](https://ctftime.org/team/19208) and [CNSS](https://blog.cnss.io/). I mainly solve reverse engineering challenges in CTFs, I also developed a great interest in Crypto and Pwn.
+I've participated in a lot of CTF competitions. I am currently a member of [Nu1L Team](https://ctftime.org/team/19208){:target="_blank"} and [CNSS](https://blog.cnss.io/){:target="_blank"}. I mainly solve reverse engineering challenges in CTFs, I also developed a great interest in Crypto and Pwn.
 
 ### Contact
 
 Please feel free to contact me if you have anything interesting to share or ask :)
 
 - EMail: yype@foxmail.com
-- [Twitter](https://twitter.com/_yype)
-- [GitHub](https://github.com/yype)
+- [Twitter](https://twitter.com/_yype){:target="_blank"}
+- [GitHub](https://github.com/yype){:target="_blank"}
 

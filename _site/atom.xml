@@ -4,7 +4,7 @@
  <title>yype.site</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2021-01-16T14:09:50+08:00</updated>
+ <updated>2021-01-16T17:02:05+08:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name></name>
@@ -19,7 +19,7 @@
    <id>http://localhost:4000/2020/04/20/Hypercard-Over-Windows</id>
    <content type="html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
 
-&lt;p&gt;Recently in PlaidCTF2020 there was a challenge called &lt;em&gt;The Watness 2&lt;/em&gt;, which is a game that requires &lt;em&gt;HyperCard&lt;/em&gt; to run. Since I did not have a Macbook computer, I’d been struggling figuring out ways to run this game over my Windows 10 laptop. Here is how I finally managed to do that.&lt;/p&gt;
+&lt;p&gt;Recently in PlaidCTF2020 there was a RE challenge called &lt;em&gt;The Watness 2&lt;/em&gt;, which is a game that requires the application &lt;em&gt;HyperCard&lt;/em&gt; to run. Since I did not have a Macbook computer, I’d been struggling figuring out ways to run this game over my Windows 10 laptop. Here is how I finally managed to do that.&lt;/p&gt;
 
 &lt;h2 id=&quot;steps&quot;&gt;Steps&lt;/h2&gt;
 
@@ -542,7 +542,7 @@ end arrowKey
 
 &lt;p&gt;&lt;img src=&quot;/assets/HypercardOverWindows/1588514193878.png&quot; alt=&quot;1588514193878&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;As for the XCMD part, it’s basically just a few hours’ reversing work. There are no reliable decompilers for the 68k architecture so I have to read the assembly. It wasn’t too hard, but I did spend several hours learning the basic concepts of the 68k’s instruction set though.&lt;/p&gt;
+&lt;p&gt;As for the XCMD part, it’s basically just a few hours’ reverse engineering work. Since there are currently no reliable decompilers for the 68k architecture, I have to read the assembly. It wasn’t too hard, but I did spend several hours learning the basic concepts of 68k’s instruction set.&lt;/p&gt;
 
 &lt;p&gt;After the reverse engineering work, the watnesssolver’s checking methods can be rewritten in Python as:&lt;/p&gt;
 
@@ -683,7 +683,7 @@ def solver(path, constraints):
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Looking around in the game, we’ll know that there are 3 puzzles we need to solve. So we simply run 3 DFS searches on these contraints and three unique solutions will be printed out.&lt;/p&gt;
+&lt;p&gt;Looking around in the game, we’ll know that there are 3 puzzles we need to solve. So we can simply run 3 DFS searches on these contraints and three unique solutions will be printed out.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;def dfs(depth, path, constraints):
     if depth &amp;gt; 24: # figured out after multiple tests
