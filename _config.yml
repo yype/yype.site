@@ -1,7 +1,7 @@
 site: yype's site
 url: https://yype.site
 title: yype.site
-description:
+description: hacking & exploring
 twitter:
   username: _yype
   card: summary
@@ -14,7 +14,7 @@ author:
   url: #yoururl
 permalink: pretty
 
-baseurl: "https://yype.site"
+baseurl: ""
 
 highlighter: none
 

@@ -3,7 +3,7 @@
     "title": "yype.site",
     "home_page_url": "http://localhost:4000/",
     "feed_url": "http://localhost:4000/feed.json",
-    "description": "logs that belong to yype",
+    "description": "hacking & exploring",
     "icon": "http://localhost:4000/apple-touch-icon.png",
     "favicon": "http://localhost:4000/favicon.ico",
     "expired": false,
