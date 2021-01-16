@@ -3,7 +3,7 @@ layout: page
 title: Yupeng Yang
 ---
 
-### Security Researcher (Newbie)
+### Security Researcher (Pending)
 
 My research interests include system security, software security, software analysis and vulunerablity discovery.
 
@@ -15,13 +15,13 @@ My research interests include system security, software security, software analy
 
 ### CTF Player
 
-I've participated in a lot of CTFs. I am currently a member of Nu1L Team and CNSS. I mainly solve reverse engineering challenges when playing CTFs.
+I've participated in a lot of CTF competitions. I am currently a member of [Nu1L Team](https://ctftime.org/team/19208) and [CNSS](https://blog.cnss.io/). I mainly solve reverse engineering challenges in CTFs, I also developed a great interest in Crypto and Pwn.
 
 ### Contact
 
-Please feel free to contact me if you have anything to share or ask :)
+Please feel free to contact me if you have anything interesting to share or ask :)
 
 - EMail: yype@foxmail.com
-- Twitter: https://twitter.com/_yype
-- GitHub: https://github.com/yype
+- [Twitter](https://twitter.com/_yype)
+- [GitHub](https://github.com/yype)
 

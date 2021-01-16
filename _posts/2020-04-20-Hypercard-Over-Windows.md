@@ -13,16 +13,14 @@ Recently in PlaidCTF2020 there was a challenge called *The Watness 2*, which is 
 ## Steps
 
 - Follow [this great video tutorial](https://www.youtube.com/watch?v=TY3pjSGg1y4)
-
 - Download [StuffitExpander](https://www.macintoshrepository.org/2475-stuffit-expander-and-dropstuff-5-5), add it to the volumes' list, install it inside the VM:
 
-  ![1587369699146]({{ site.github.url }}/assets/HypercardOverWindows/1587369699146.png)
+![1587369699146]({{ site.github.url }}/assets/HypercardOverWindows/1587369699146.png)
 
 - Download [HyperCard 2.4](https://macintoshgarden.org/apps/hypercard-241), install it inside the VM as described above
-
 - Extract the .rc1 file from the .sit file and open it with a simple double-click:
 
-  ![1587369949569]({{ site.github.url }}/assets/HypercardOverWindows/1587369949569.png)
+![1587369949569]({{ site.github.url }}/assets/HypercardOverWindows/1587369949569.png)
 
 ### Challenge Solution
 

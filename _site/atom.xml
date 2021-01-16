@@ -4,7 +4,7 @@
  <title>yype.site</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2021-01-16T00:24:46+08:00</updated>
+ <updated>2021-01-16T12:40:42+08:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name></name>
@@ -24,23 +24,18 @@
 &lt;h2 id=&quot;steps&quot;&gt;Steps&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Follow &lt;a href=&quot;https://www.youtube.com/watch?v=TY3pjSGg1y4&quot;&gt;this great video tutorial&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Download &lt;a href=&quot;https://www.macintoshrepository.org/2475-stuffit-expander-and-dropstuff-5-5&quot;&gt;StuffitExpander&lt;/a&gt;, add it to the volumes’ list, install it inside the VM:&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/assets/HypercardOverWindows/1587369699146.png&quot; alt=&quot;1587369699146&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Download &lt;a href=&quot;https://macintoshgarden.org/apps/hypercard-241&quot;&gt;HyperCard 2.4&lt;/a&gt;, install it inside the VM as described above&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Extract the .rc1 file from the .sit file and open it with a simple double-click:&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/assets/HypercardOverWindows/1587369949569.png&quot; alt=&quot;1587369949569&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
+  &lt;li&gt;Follow &lt;a href=&quot;https://www.youtube.com/watch?v=TY3pjSGg1y4&quot;&gt;this great video tutorial&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Download &lt;a href=&quot;https://www.macintoshrepository.org/2475-stuffit-expander-and-dropstuff-5-5&quot;&gt;StuffitExpander&lt;/a&gt;, add it to the volumes’ list, install it inside the VM:&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/HypercardOverWindows/1587369699146.png&quot; alt=&quot;1587369699146&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Download &lt;a href=&quot;https://macintoshgarden.org/apps/hypercard-241&quot;&gt;HyperCard 2.4&lt;/a&gt;, install it inside the VM as described above&lt;/li&gt;
+  &lt;li&gt;Extract the .rc1 file from the .sit file and open it with a simple double-click:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/HypercardOverWindows/1587369949569.png&quot; alt=&quot;1587369949569&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;challenge-solution&quot;&gt;Challenge Solution&lt;/h3&gt;
 
@@ -735,9 +730,9 @@ Path DRDDDDRUURRRULURRDDDDDDR is ok
  
  <entry>
    <title>Write Invalid and Cache Coherence</title>
-   <link href="http://localhost:4000/2020/03/12/cache-coherence%E4%B8%AD%E7%9A%84write-invalid"/>
+   <link href="http://localhost:4000/2020/03/12/write-invalid-and-cache-coherence"/>
    <updated>2020-03-12T00:00:00+08:00</updated>
-   <id>http://localhost:4000/2020/03/12/cache coherence中的write-invalid</id>
+   <id>http://localhost:4000/2020/03/12/write-invalid-and-cache-coherence</id>
    <content type="html">&lt;p&gt;// This post was written in Chinese&lt;/p&gt;
 
 &lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
@@ -771,9 +766,10 @@ Path DRDDDDRUURRRULURRDDDDDDR is ok
 
 &lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;https://www3.nd.edu/~mniemier/teaching/2010_B_Fall/lectures/lec_27_slides.pdf&lt;/p&gt;
-
-&lt;p&gt;https://www.cs.utah.edu/~retrac/papers/hpca07.pdf&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;https://www3.nd.edu/~mniemier/teaching/2010_B_Fall/lectures/lec_27_slides.pdf&lt;/li&gt;
+  &lt;li&gt;https://www.cs.utah.edu/~retrac/papers/hpca07.pdf&lt;/li&gt;
+&lt;/ul&gt;
 </content>
  </entry>
  
