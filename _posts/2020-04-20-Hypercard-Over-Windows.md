@@ -8,7 +8,7 @@ tags: [Write-up, Reverse Engineering, Hypercard, PlaidCTF, PlaidCTF2020]
 
 ## Intro
 
-Recently in PlaidCTF2020 there was a challenge called *The Watness 2*, which is a game that requires *HyperCard* to run. Since I did not have a Macbook computer, I'd been struggling figuring out ways to run this game over my Windows 10 laptop. Here is how I finally managed to do that.
+Recently in PlaidCTF2020 there was a RE challenge called *The Watness 2*, which is a game that requires the application *HyperCard* to run. Since I did not have a Macbook computer, I'd been struggling figuring out ways to run this game over my Windows 10 laptop. Here is how I finally managed to do that.
 
 ## Steps
 
@@ -529,7 +529,7 @@ What's more, I found that I can set breakpoints in the script and debug the game
 
 ![1588514193878]({{ site.github.url }}/assets/HypercardOverWindows/1588514193878.png)
 
-As for the XCMD part, it's basically just a few hours' reversing work. There are no reliable decompilers for the 68k architecture so I have to read the assembly. It wasn't too hard, but I did spend several hours learning the basic concepts of the 68k's instruction set though.
+As for the XCMD part, it's basically just a few hours' reverse engineering work. Since there are currently no reliable decompilers for the 68k architecture, I have to read the assembly. It wasn't too hard, but I did spend several hours learning the basic concepts of 68k's instruction set.
 
 After the reverse engineering work, the watnesssolver's checking methods can be rewritten in Python as:
 
@@ -671,7 +671,7 @@ def solver(path, constraints):
 
 ```
 
-Looking around in the game, we'll know that there are 3 puzzles we need to solve. So we simply run 3 DFS searches on these contraints and three unique solutions will be printed out. 
+Looking around in the game, we'll know that there are 3 puzzles we need to solve. So we can simply run 3 DFS searches on these contraints and three unique solutions will be printed out. 
 
 ```python
 def dfs(depth, path, constraints):
