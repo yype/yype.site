@@ -1,7 +1,7 @@
 site: yype's site
 url: https://yype.site
 title: yype.site
-description: logs that belong to yype
+description:
 twitter:
   username: _yype
   card: summary
@@ -14,7 +14,7 @@ author:
   url: #yoururl
 permalink: pretty
 
-baseurl: ""
+baseurl: "https://yype.site"
 
 highlighter: none
 
