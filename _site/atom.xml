@@ -4,13 +4,89 @@
  <title>yype.site</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2021-01-16T17:02:05+08:00</updated>
+ <updated>2021-01-17T01:22:26+08:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name></name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>N1CTF2020 n1vault, thoughts &amp; solutions</title>
+   <link href="http://localhost:4000/2020/10/23/n1vault"/>
+   <updated>2020-10-23T00:00:00+08:00</updated>
+   <id>http://localhost:4000/2020/10/23/n1vault</id>
+   <content type="html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+
+&lt;p&gt;I designed the RE challenge &lt;em&gt;n1vault&lt;/em&gt; in the recent CTF &lt;a href=&quot;https://ctftime.org/event/1099&quot; target=&quot;_blank&quot;&gt;N1CTF2020&lt;/a&gt;, in this post I will talk about details about this chal and offer some possible solutions.&lt;/p&gt;
+
+&lt;p&gt;The core part of this challenge is to craft a file’s CRC to an arbitrary value(zero) by modifying some specified bytes of the same bit size as the CRC value.&lt;/p&gt;
+
+&lt;p&gt;As for the binary &lt;code&gt;n1vault&lt;/code&gt;, it uses SHA256 to digest all the bytes inside the file(&lt;code&gt;credencial.png&lt;/code&gt;) except for the even bytes in the last 25 bytes(some twists were added to the &lt;em&gt;sha256_update&lt;/em&gt; function, paving the way for the backdoor), once the file’s CRC has been faked to 0, a secret logic(backdoor) will be triggered by an exception &lt;em&gt;FPE_INTDIV&lt;/em&gt;, since the verification inside function &lt;code&gt;main&lt;/code&gt; has an unnecessary comparison &lt;code&gt;4764888639493207598 / (crc32_result | crc64_result) == 1&lt;/code&gt;, which will trigger an &lt;em&gt;FPE_INTDIV&lt;/em&gt; when both crc32_result and crc64_result are zero, and will be evaluated to &lt;em&gt;true&lt;/em&gt; when given the original file &lt;code&gt;credential.png&lt;/code&gt;. Players’ job is to to craft an input to trigger the backdoor, send the crafted bytes to the judging bot and receive the flag.&lt;/p&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;The reverse engineering part of the binary program is quite easy, some junks with fixed patterns are inserted into the main logic, which can be bypassed by simple searching &amp;amp; replacing. After that the program logic is really straightforward, we only have to solve the math problem left.&lt;/p&gt;
+
+&lt;p&gt;CRC has a property that the final result can be viewed as the linear combination of the influence of each bit in the message and an initial bias, based on $GF(2)$, which can be described as:
+\(f(x)=f(0) + \sum_{i=0}^{CRC\_SIZE-1} x_i \cdot \mbox{influence}(i),\)
+where $f(0)$ is the initial bias, specifically for this challenge, is the CRC of the credential with all the even bytes in the last 25 bytes set to zero. Given this property, if we have enough $x_i$ to control, we can easily construct a matrix and solve each $x_i$ using gauss elimination. The twist here is that we have to ensure both $f(x)=CRC32(credential)$ and $g(x)=CRC64(credential)$ are equal to zero. Actually if we let $h(x)=(f(x) &amp;lt; &amp;lt; 64)+g(x)$ and focus our attention on making $h(x)=0$, it has the same effect as making both $f(x)$ and $g(x)$ zero.&lt;/p&gt;
+
+&lt;p&gt;I write a tool based on this interesting property of CRC, allowing us to arbitrarily craft a file’s CRC by specifying certain bits available for modification. It can output all the available solutions and allows for fewer available bits than the bit size of the CRC result. You can check the tool here:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://github.com/yype/crcollider&quot; target=&quot;_blank&quot;&gt;https://github.com/yype/crcollider&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Using this tool we can easily solve the problem using the following Python code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;from crcollider import collcrc
+from crc_funcs import crc64, crc32
+
+def crc96(m):
+    return (crc32(m) &amp;lt;&amp;lt; 64) + crc64(m)
+
+def solve_chal():
+    with open('credential.png', 'rb') as f:
+        org_img = f.read()
+
+    rg = list(range(len(org_img)*8))
+    available_bits = []
+    for i in range(12):
+        # even bytes in the last 25 bytes
+        available_bits += rg[len(rg)-16*i-16:len(rg)-16*i-8]
+
+    sol_num, sols = collcrc(crc96, 96, org_img, available_bits, 0x0)
+    
+    print(f'{sol_num} solution(s) found')
+
+    for i, each in enumerate(sols):
+        file_out = f'credential_sol{i}.png'
+        print(f'Outputting sol{i} to {file_out}...')
+        with open(file_out, 'wb') as f:
+            f.write(each)
+
+if __name__ == '__main__':
+    solve_chal()
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There are totally 4 solutions available for this challenge. One of them contains only visible characters, which is &lt;code&gt;n1vaultadmin&lt;/code&gt;(intentionally crafted), while others are not. It might be better if I put some constraints to ensure that only one solution is available though.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;solution&amp;gt; python3 .\main.py
+4 solution(s) found
+Outputting sol0 to credential_sol0.png...
+Outputting sol1 to credential_sol1.png...
+Outputting sol2 to credential_sol2.png...
+Outputting sol3 to credential_sol3.png...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can also check the awesome write-up from team &lt;em&gt;Super Guesser&lt;/em&gt; who got the first blood of this challenge here: &lt;a href=&quot;https://gist.github.com/jhs7jhs/cb5fedc1ffb6138b73420cb8567357bb#n1vault&quot; target=&quot;_blank&quot;&gt;https://gist.github.com/jhs7jhs/cb5fedc1ffb6138b73420cb8567357bb#n1vault&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The source code of this challenge and a duplicate of this post are uploaded to GitHub, check them out at: &lt;a href=&quot;https://github.com/Nu1LCTF/n1ctf-2020/tree/main/RE/n1vault&quot; target=&quot;_blank&quot;&gt;https://github.com/Nu1LCTF/n1ctf-2020/tree/main/RE/n1vault&lt;/a&gt;.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>PlaidCTF2020 The Watness 2 Write-up</title>
@@ -767,9 +843,176 @@ Path DRDDDDRUURRRULURRDDDDDDR is ok
 &lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;https://www3.nd.edu/~mniemier/teaching/2010_B_Fall/lectures/lec_27_slides.pdf&lt;/li&gt;
-  &lt;li&gt;https://www.cs.utah.edu/~retrac/papers/hpca07.pdf&lt;/li&gt;
+  &lt;li&gt;https://www3.nd.edu/~mniemier/teaching/2010_B_Fall/lectures/lec_27_slides.pdf.&lt;/li&gt;
+  &lt;li&gt;https://www.cs.utah.edu/~retrac/papers/hpca07.pdf.&lt;/li&gt;
 &lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>D^3CTF2019 Ancient Game V2, thoughts &amp; solutions</title>
+   <link href="http://localhost:4000/2020/02/20/ancient-game-v2"/>
+   <updated>2020-02-20T00:00:00+08:00</updated>
+   <id>http://localhost:4000/2020/02/20/Ancient-Game-V2</id>
+   <content type="html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+
+&lt;p&gt;I designed the RE challenge &lt;em&gt;Ancient Game V2&lt;/em&gt; in D^3CTF2019. This post is about some related stuff along with the chal’s solution.&lt;/p&gt;
+
+&lt;h2 id=&quot;challenge&quot;&gt;Challenge&lt;/h2&gt;
+
+&lt;p&gt;This challenge uses a virtual architecture similar to OISC to implement a classic Sudoku verification. There are 4 types of instructions, and all logical operations are implemented through NAND gates. A branch control and two I / O interrupts are also issued.&lt;/p&gt;
+
+&lt;p&gt;Operations like XOR / AND / OR are all implemented by combinations of NAND gates, for example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;xor x,y =&amp;gt;
+xor_tmp[0] = y NAND y
+xor_tmp[1] = x NAND xor_tmp[0]
+xor_tmp[2] = x NAND x
+xor_tmp[3] = y NAND xor_tmp[2]
+x = xor_tmp[1] NAND xor_tmp[3]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Which is based on the fact that:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Q = A XOR B = [ B NAND ( A NAND A ) ] NAND [ A NAND ( B NAND B ) ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;An excerpt of the Sudoku Verifier code in my &lt;em&gt;self-defined assembly&lt;/em&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;welcome = mkstr(&quot;**************************\n**  Welcome To D^3CTF   **\n**   Ancient Game V2    **\n**************************\n\nInput Flag:&quot;)
+wrong = mkstr(&quot;\nSorry, please try again.\n&quot;)
+correct = mkstr(&quot;\nCorrect.\n&quot;)
+
+flag = new(50)
+// distract = new(1000)
+grid = new(81)
+
+
+// initialize the puzzle
+set(grid[0],9)
+set(grid[5],8)
+set(grid[9],1)
+set(grid[10],3)
+set(grid[14],9)
+set(grid[16],7)
+...
+set(grid[71],6)
+set(grid[75],9)
+set(grid[80],1)
+
+__code_start__
+
+// print the welcome message
+print(welcome)
+
+// get input
+input(flag[0])
+input(flag[1])
+input(flag[2])
+input(flag[3])
+input(flag[4])
+input(flag[5])
+...
+input(flag[46])
+input(flag[47])
+input(flag[48])
+input(flag[49])
+
+// transfer chars in the flag into the grids
+
+long_transfer(flag[0],grid[1])
+long_transfer(flag[1],grid[2])
+...
+long_transfer(flag[47],grid[77])
+long_transfer(flag[48],grid[78])
+long_transfer(flag[49],grid[79])
+
+// xor with xor_table, which is introduced 
+//   for generating different flags to different teams
+
+grid[1] = grid[1] ^ xor_table[0]
+grid[2] = grid[2] ^ xor_table[1]
+grid[3] = grid[3] ^ xor_table[2]
+grid[4] = grid[4] ^ xor_table[3]
+grid[6] = grid[6] ^ xor_table[4]
+grid[7] = grid[7] ^ xor_table[5]
+...
+grid[77] = grid[77] ^ xor_table[47]
+grid[78] = grid[78] ^ xor_table[48]
+grid[79] = grid[79] ^ xor_table[49]
+
+// verify the sudoku game
+
+// rows
+jmp _label_wrong if grid[4] == grid[5]
+jmp _label_wrong if grid[4] == grid[6]
+jmp _label_wrong if grid[4] == grid[7]
+...
+jmp _label_wrong if grid[3] == grid[7]
+jmp _label_wrong if grid[3] == grid[8]
+
+// columns
+jmp _label_wrong if grid[0] == grid[9]
+jmp _label_wrong if grid[0] == grid[18]
+jmp _label_wrong if grid[0] == grid[27]
+...
+jmp _label_wrong if grid[62] == grid[80]
+jmp _label_wrong if grid[71] == grid[80]
+
+// subgrids
+jmp _label_wrong if grid[0] == grid[1]
+jmp _label_wrong if grid[0] == grid[2]
+jmp _label_wrong if grid[0] == grid[9]
+jmp _label_wrong if grid[0] == grid[10]
+...
+jmp _label_wrong if grid[78] == grid[79]
+jmp _label_wrong if grid[78] == grid[80]
+jmp _label_wrong if grid[79] == grid[80]
+
+// check range
+
+jmp _label_wrong if outofnumbers(grid[1])
+jmp _label_wrong if outofnumbers(grid[2])
+jmp _label_wrong if outofnumbers(grid[3])
+jmp _label_wrong if outofnumbers(grid[4])
+...
+jmp _label_wrong if outofnumbers(grid[76])
+jmp _label_wrong if outofnumbers(grid[77])
+jmp _label_wrong if outofnumbers(grid[78])
+jmp _label_wrong if outofnumbers(grid[79])
+
+_label_correct:
+print(correct)
+return
+
+_label_wrong:
+print(wrong)
+return
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I wrote an assembler for this assembly, which was used to generate the final challenge that the players got. The assembler wasn’t open-sourced since it’s ugly.&lt;/p&gt;
+
+&lt;p&gt;During the competition, due to the negligence of myself, the implementation of the &lt;code&gt;outofnumbers (var)&lt;/code&gt; function was incorrectly written as &lt;code&gt;return var in range (10)&lt;/code&gt;, resulting in multiple solutions. Since the target Sudoku should only be filled with 1 ~ 9, the correct implementation should be &lt;code&gt;return var in range (1, 10)&lt;/code&gt;. This was my fault, and I had to update the challenge with a fixed one during the competition.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Sudoku Map&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://camo.githubusercontent.com/9e3d18179573b913f906045e17194334fe646330e821fc86032756fece3958a2/68747470733a2f2f692e696d6775722e636f6d2f50727a6d7945752e706e67&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;To solve this challenge, there is no need to simplify all the logical operations. Since there is no complicated loop in the chal’s actual control flow, we can find conditions that prevent the control flow from jumping to the part which outputs “Sorry” through simple control flow tracing and symbolic analysis. Finally, we can use an SMT solver to solve the constraints that we get through the previous analysis(That’s how ThinerDAS solved this challenge).&lt;/p&gt;
+
+&lt;p&gt;Flag: d3ctf{g5lk9t28zz47y3l6m2kosbajd2vk9e2dwghxgfktcki}&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Referenceable solution script: &lt;a href=&quot;https://github.com/0h2o/D3CTF_Rev/blob/master/AncientGameV2/sol.py&quot;&gt;sol.py&lt;/a&gt; by &lt;a href=&quot;https://github.com/byaidu&quot;&gt;Byaidu&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The source code of this challenge(not fully open-sourced) and a duplicate of this post are uploaded to GitHub, check them out at: &lt;a href=&quot;https://github.com/yype/D3CTF_Rev/tree/master/AncientGameV2&quot; target=&quot;_blank&quot;&gt;https://github.com/yype/D3CTF_Rev/tree/master/AncientGameV2&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;more&quot;&gt;More..&lt;/h2&gt;
+
+&lt;p&gt;I’ve always found OISC quite interesting to me. This challenge was just a demo of one of my ideas, maybe I will do some extra work related to OISC in the upcoming future.&lt;/p&gt;
 </content>
  </entry>
  

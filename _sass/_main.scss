@@ -22,7 +22,8 @@ nav ul {
 a {
     color: #000;
     text-decoration-skip-ink: auto;
-    text-decoration: underline;
+	text-decoration: underline;
+	word-break: break-word; 
 }
 
 pre {
@@ -81,6 +82,21 @@ hr {
     }
 }
 
+  h1 .octicon, h2 .octicon, h3 .octicon, h4 .octicon, h5 .octicon, h6 .octicon  {
+	visibility: hidden;
+  }
+  
+  h1:hover .octicon, h2:hover .octicon, h3:hover .octicon, h4:hover .octicon, h5:hover .octicon, h6:hover .octicon {
+	visibility: visible;
+  }
+  
+  .octicon {
+	fill: currentColor;
+	padding: 0;
+	margin-left: -20px;
+	vertical-align: middle;
+  }
+
 li {
 > ol, > ul, > dl { // sub list
 	padding-left: 2rem;
@@ -88,6 +104,16 @@ li {
 > p {
 	margin: 1rem 0 0.8rem;
 }
+word-break: break-word; 
+
+}
+
+li > a {
+	word-break: normal;
+}
+
+ul > li {
+	word-break: break-all;
 }
 
 ul, ol {

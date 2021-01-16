@@ -37,5 +37,5 @@ Write-invalidate 在一些情况下的优势是很明显的，例如突发大量
 
 **References**
 
-- https://www3.nd.edu/~mniemier/teaching/2010_B_Fall/lectures/lec_27_slides.pdf
-- https://www.cs.utah.edu/~retrac/papers/hpca07.pdf
+- https://www3.nd.edu/~mniemier/teaching/2010_B_Fall/lectures/lec_27_slides.pdf.
+- https://www.cs.utah.edu/~retrac/papers/hpca07.pdf. 

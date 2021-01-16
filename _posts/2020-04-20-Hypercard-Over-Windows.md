@@ -3,7 +3,7 @@ layout: post
 title: PlaidCTF2020 The Watness 2 Write-up
 description: 
 summary: 
-tags: [Write-up, Reverse Engineering, Hypercard, PlaidCTF, PlaidCTF2020]
+tags: [Write-up, Reverse Engineering, Hypercard, CTF, PlaidCTF2020]
 ---
 
 ## Intro
