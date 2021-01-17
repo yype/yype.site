@@ -13,7 +13,7 @@ I designed the RE challenge *Ancient Game V2* in D^3CTF2019. This post is about 
 
 ## Challenge
 
-This challenge uses a virtual architecture similar to OISC to implement a classic Sudoku verification. There are 4 types of instructions, and all logical operations are implemented through NAND gates. A branch control and two I / O interrupts are also issued.
+This challenge uses a virtual architecture similar to OISC to implement a classic Sudoku verification. There are basically just 4 types of instructions: input, output, jcc and NAND, which can also be seen as an OISC with two I/O interrupts introduced. All logical operations are implemented through NAND gates.
 
 Operations like XOR / AND / OR are all implemented by combinations of NAND gates, for example:
 
@@ -148,7 +148,7 @@ return
 
 I wrote an assembler for this assembly, which was used to generate the final challenge that the players got. The assembler wasn't open-sourced since it's ugly.
 
-During the competition, due to the negligence of myself, the implementation of the `outofnumbers (var)` function was incorrectly written as `return var in range (10)`, resulting in multiple solutions. Since the target Sudoku should only be filled with 1 ~ 9, the correct implementation should be `return var in range (1, 10)`. This was my fault, and I had to update the challenge with a fixed one during the competition.
+During the competition, due to the negligence of myself, the implementation of the `outofnumbers (var)` function was incorrectly written as `return var not in range (10)`, resulting in multiple solutions. Since the target Sudoku should only be filled with 1 ~ 9, the correct implementation should be `return var not in range (1, 10)`. This was my fault, and I had to update the challenge with a fixed one during the competition.
 
 **Sudoku Map**
 
