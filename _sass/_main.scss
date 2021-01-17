@@ -33,6 +33,7 @@ pre {
 
 .post p {
 	margin: .5rem 0;
+	word-break: break-word;
 }
 
 .post h1, .post h2, .post h3, .post h4 {
@@ -81,21 +82,6 @@ hr {
 	  margin-top: 0.3rem;
     }
 }
-
-  h1 .octicon, h2 .octicon, h3 .octicon, h4 .octicon, h5 .octicon, h6 .octicon  {
-	visibility: hidden;
-  }
-  
-  h1:hover .octicon, h2:hover .octicon, h3:hover .octicon, h4:hover .octicon, h5:hover .octicon, h6:hover .octicon {
-	visibility: visible;
-  }
-  
-  .octicon {
-	fill: currentColor;
-	padding: 0;
-	margin-left: -20px;
-	vertical-align: middle;
-  }
 
 li {
 > ol, > ul, > dl { // sub list
