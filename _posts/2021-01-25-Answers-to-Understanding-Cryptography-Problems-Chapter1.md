@@ -480,7 +480,7 @@ $$
 
 (1) See the solution script:
 
-```
+```python
 # enc: f = 7*x+22 mod 26
 # dec: x = (f-22)*inv(7,26) mod 26
 #        = (f-22)*15 mod 26
@@ -508,7 +508,7 @@ print(m)
 $$
 e_k(x)=y=a\cdot x+b\bmod30\\
 d_k(y)=x=a^{-1}\cdot(y-b)\bmod 30\\
-\text{Key\ and\ Requirements:} \\
+\text{Key and Requirements:} \\
 (k=(a,b)\ \&\ gcd(a,30)=1)
 $$
 
@@ -569,7 +569,7 @@ $$
 
 (3) See the solution script:
 
-```
+```python
 def enc_k1(x):
     return (3*x+5) % 26
 

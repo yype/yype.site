@@ -13,7 +13,8 @@
   font-style: italic;
 }
 p > .highlighter-rouge {
-  color:rgb(143, 120, 72);
+  color:#b32768;
+  font-weight:bold;
 }
 .highlight .cs {
   color: #999999;
