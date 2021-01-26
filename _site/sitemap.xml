@@ -2,11 +2,11 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://localhost:4000/about</loc>
-<lastmod>2021-01-17T09:01:46+08:00</lastmod>
+<lastmod>2021-01-26T16:31:10+08:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/search</loc>
-<lastmod>2021-01-17T09:01:46+08:00</lastmod>
+<lastmod>2021-01-26T16:31:10+08:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/2020/02/20/ancient-game-v2</loc>
@@ -23,6 +23,10 @@
 <url>
 <loc>http://localhost:4000/2020/10/23/n1vault</loc>
 <lastmod>2020-10-23T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/2021/01/25/answers-to-understanding-cryptography-problems-chapter1</loc>
+<lastmod>2021-01-25T00:00:00+08:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/</loc>
@@ -62,5 +66,11 @@
 </url>
 <url>
 <loc>http://localhost:4000/tag/N1CTF2020/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tag/Crypto/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tag/Understanding%20Cryptography/</loc>
 </url>
 </urlset>

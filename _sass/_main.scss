@@ -34,6 +34,7 @@ pre {
 .post p {
 	margin: .5rem 0;
 	word-break: break-word;
+	display: inline;
 }
 
 .post h1, .post h2, .post h3, .post h4 {
@@ -49,11 +50,11 @@ pre {
 }
 
 code,pre {
-	background: rgb(236, 237, 238);
+	// background:#f8f8f8;
 }
 
 code {
-	padding: .1rem;
+	// padding: .1rem;
 }
 
 pre code {
