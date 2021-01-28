@@ -4,6 +4,7 @@ title: PlaidCTF2020 The Watness 2 Write-up
 description: 
 summary: 
 tags: [Write-up, Reverse Engineering, Hypercard, CTF, PlaidCTF2020]
+visible: 1
 ---
 
 ## Intro

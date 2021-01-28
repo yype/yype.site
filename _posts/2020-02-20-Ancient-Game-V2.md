@@ -1,9 +1,10 @@
 ---
 layout: post
-title: D^3CTF2019 Ancient Game V2, thoughts & solutions
+title: D^3CTF2019 Ancient Game V2, Thoughts & Solutions
 description: 
 summary: 
 tags: [CTF, Reverse Engineering, D^3CTF2019, OISC]
+visible: 1
 ---
 
 ## Intro

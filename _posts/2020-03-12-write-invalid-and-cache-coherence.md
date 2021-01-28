@@ -4,6 +4,7 @@ title: Write Invalid and Cache Coherence
 description: 
 summary: 
 tags: [distributed computing, cache coherence, write-invalid, class notes]
+visible: 1
 ---
 
 // This post was written in Chinese

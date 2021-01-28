@@ -4,13 +4,223 @@
  <title>yype.site</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2021-01-26T16:48:37+08:00</updated>
+ <updated>2021-01-28T17:46:48+08:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name></name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Solutions to Understanding Cryptography Problems - Chapter 2</title>
+   <link href="http://localhost:4000/2021/01/26/answers-to-understanding-cryptography-problems-chapter2"/>
+   <updated>2021-01-26T00:00:00+08:00</updated>
+   <id>http://localhost:4000/2021/01/26/Answers-to-Understanding-Cryptography-Problems-Chapter2</id>
+   <content type="html">&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#intro&quot; id=&quot;markdown-toc-intro&quot;&gt;Intro&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#problems&quot; id=&quot;markdown-toc-problems&quot;&gt;Problems&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#21&quot; id=&quot;markdown-toc-21&quot;&gt;2.1&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#22&quot; id=&quot;markdown-toc-22&quot;&gt;2.2&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#23&quot; id=&quot;markdown-toc-23&quot;&gt;2.3&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#24-not-verified&quot; id=&quot;markdown-toc-24-not-verified&quot;&gt;2.4 (not verified)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#25&quot; id=&quot;markdown-toc-25&quot;&gt;2.5&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#26&quot; id=&quot;markdown-toc-26&quot;&gt;2.6&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#27&quot; id=&quot;markdown-toc-27&quot;&gt;2.7&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#28&quot; id=&quot;markdown-toc-28&quot;&gt;2.8&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#29&quot; id=&quot;markdown-toc-29&quot;&gt;2.9&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+
+&lt;p&gt;My solutions to the practice problems in “Understanding Cryptography: A Textbook for Students and Practitioners - Chapter 2”.&lt;/p&gt;
+
+&lt;p&gt;The solution scripts to some of the problems have been uploaded to GitHub, you can check them out at: &lt;a href=&quot;https://github.com/yype/UnderstandingCrypto&quot; target=&quot;_blank&quot;&gt;https://github.com/yype/UnderstandingCrypto&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
+
+&lt;h3 id=&quot;21&quot;&gt;2.1&lt;/h3&gt;
+
+&lt;p&gt;(1) The key could look like a stream of letters from A~Z, which represent keys between 0~25.&lt;/p&gt;
+
+\[y_i=e_{k_i}(x_i)=x_i+k_i\bmod26\\
+x_i=d_{k_i}(y_i)=y_i-k_i\bmod26\\\]
+
+&lt;p&gt;(2) I found this problem strange at first, and later, according to the Internet, I found that the key provided in the book is wrong. The correct key should be &lt;code class=&quot;highlighter-rouge&quot;&gt;rsidpy dkawoy&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Solution script:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;enc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'bsaspp kkuosp'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'rsidpy dkawoy'&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# the key in the book is wrong
+&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;dec&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;enc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;enc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;' '&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;enc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;dec&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;dec&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;' '&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kaspar hauser
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(3) According to &lt;a href=&quot;https://en.wikipedia.org/wiki/Kaspar_Hauser&quot;&gt;this&lt;/a&gt;, it seems that Hauser died of a fatal stab wound on 17 December 1833.&lt;/p&gt;
+
+&lt;h3 id=&quot;22&quot;&gt;2.2&lt;/h3&gt;
+
+&lt;p&gt;(1) Life cycle of the key: Every single bit in the key should never be reused.&lt;/p&gt;
+
+&lt;p&gt;(2) Storage of the key during the life cycle: The key must be stored at both the sending and receiving end.&lt;/p&gt;
+
+&lt;p&gt;(3) Storage of the key after the life cycle: They must be destroyed since all former encrypted data will become vulunerable if these keys are leaked in the future.&lt;/p&gt;
+
+&lt;p&gt;(4) Key distribution: The safest way, in my point of view, is to make only 2 copies of the key in the world, and to distribute the keys physically(without being intercepted by any 3rd parties).&lt;/p&gt;
+
+&lt;p&gt;(5) Generation of the key: A TRNG should be used. Or else it will be the same as using a normal stream cipher along with a PRNG, and just distributing the key of the PRNG.&lt;/p&gt;
+
+&lt;h3 id=&quot;23&quot;&gt;2.3&lt;/h3&gt;
+
+&lt;p&gt;When 128 bits of the plaintext($x_0$~$x_{127}$) and their corresponding cipher bits($y_0$~$y_{127}$) are known to an attacker, he/she/it can easily calculate the key bits($k_0$~$k_{127}$) used in the encryption process:&lt;/p&gt;
+
+\[k_i=x_i\oplus y_i,i=0,1,...,127\]
+
+&lt;h3 id=&quot;24-not-verified&quot;&gt;2.4 (not verified)&lt;/h3&gt;
+
+&lt;p&gt;The attacker will have no idea which key should be correct, so any brute-force attack is meaningless. Each key guessed can be used to decrypt the ciphertext, generating a plaintext(plaindata). There is no way the attacker can know which key is right and if the plaintext decrypted is the original one.&lt;/p&gt;
+
+&lt;h3 id=&quot;25&quot;&gt;2.5&lt;/h3&gt;
+
+&lt;p&gt;(1)&lt;/p&gt;
+
+\[(c_2=1,c_1=0,c_0=1)\\
+\text{}\\
+\begin{array}{|c|c c c|}
+\text{Clk} &amp;amp; FF_2 &amp;amp; FF_1 &amp;amp; FF_0=s_i \\
+0 &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 \\
+1 &amp;amp; 1 &amp;amp; 1 &amp;amp; 0 \\
+2 &amp;amp; 1 &amp;amp; 1 &amp;amp; 1 \\
+3 &amp;amp; 0 &amp;amp; 1 &amp;amp; 1 \\
+4 &amp;amp; 1 &amp;amp; 0 &amp;amp; 1 \\
+5 &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 \\
+6 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \\
+7 &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 \\
+\end{array}\\\]
+
+&lt;p&gt;So the sequence is (&lt;code class=&quot;highlighter-rouge&quot;&gt;0011101&lt;/code&gt;)*.&lt;/p&gt;
+
+&lt;p&gt;(2)&lt;/p&gt;
+
+\[(c_2=1,c_1=0,c_0=1)\\
+\text{}\\
+\begin{array}{|c|c c c|}
+\text{Clk} &amp;amp; FF_2 &amp;amp; FF_1 &amp;amp; FF_0=s_i \\
+0 &amp;amp; 0 &amp;amp; 1 &amp;amp; 1 \\
+1 &amp;amp; 1 &amp;amp; 0 &amp;amp; 1 \\
+2 &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 \\
+3 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \\
+4 &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 \\
+5 &amp;amp; 1 &amp;amp; 1 &amp;amp; 0 \\
+6 &amp;amp; 1 &amp;amp; 1 &amp;amp; 1 \\
+7 &amp;amp; 0 &amp;amp; 1 &amp;amp; 1 \\
+\end{array}\\\]
+
+&lt;p&gt;So the sequence is (&lt;code class=&quot;highlighter-rouge&quot;&gt;1101001&lt;/code&gt;)*.&lt;/p&gt;
+
+&lt;p&gt;(3) &lt;strong&gt;a)&lt;/strong&gt; Their periods are the same. &lt;strong&gt;b)&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;S2&lt;/code&gt; can be viewed as &lt;code class=&quot;highlighter-rouge&quot;&gt;ROL(S1, 3)&lt;/code&gt;, where &lt;code class=&quot;highlighter-rouge&quot;&gt;S1/S2&lt;/code&gt; represent the repetends of the first and second sequence.&lt;/p&gt;
+
+&lt;h3 id=&quot;26&quot;&gt;2.6&lt;/h3&gt;
+
+&lt;p&gt;One possible attack: I will need to know 25 bytes(letters), which is &lt;code class=&quot;highlighter-rouge&quot;&gt;200(bits) / 8(bits/byte)&lt;/code&gt;, of the ciphertext and their corresponding plaintext. Then I will be able to calculate 200 bits of the key sequence used($k_i=\text{plainbit}_i\oplus\text{cipherbit}_i$).&lt;/p&gt;
+
+&lt;p&gt;After that, all left to do is to determine the actual keysize. We can simply run several brute-force decryptions, starting from the first plaintext bit we know, using the first $k$ bits of the 200 key bits calculated, where $k=150,151,…,200$.&lt;/p&gt;
+
+&lt;p&gt;It should be noted that if the keysize used is not correct, there is a great chance that the data decrypted is not readable(printable) ASCII text. As a result, once we successfully decrypt the ciphertext and get a readable plaintext after the 25th byte, we know what the actual keysize is.&lt;/p&gt;
+
+&lt;h3 id=&quot;27&quot;&gt;2.7&lt;/h3&gt;
+
+&lt;p&gt;The chosen LFSR’s polynomial is &lt;code class=&quot;highlighter-rouge&quot;&gt;(0,1,3,4,8)&lt;/code&gt;. I wrote a simple script to help me with the calculation, and the resulting first two output bytes can be viewed as a little endian number &lt;code class=&quot;highlighter-rouge&quot;&gt;0x90ff&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;chapt2&amp;gt; py .\p2.7.py
+0x90ff
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;28&quot;&gt;2.8&lt;/h3&gt;
+
+&lt;p&gt;(1) Draw the corresponding LFSR for each of the three polynomials.&lt;/p&gt;
+
+&lt;p&gt;I don’t want to draw them :P&lt;/p&gt;
+
+&lt;p&gt;(2) I wrote a script to calculate all the possible initial values and their corresponding sequence lengh, it outputs as follows:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;chapt2&amp;gt; py .\p2.8.py
+Polynomial: (0, 1, 4)
+init            len(seq)
+1               15
+2               15
+3               15
+4               15
+5               15
+6               15
+7               15
+8               15
+9               15
+10              15
+11              15
+12              15
+13              15
+14              15
+15              15
+
+Polynomial: (0, 2, 4)
+init            len(seq)
+1               6
+2               6
+3               6
+4               6
+5               6
+6               3
+7               6
+8               6
+9               6
+10              6
+11              3
+12              6
+13              3
+14              6
+15              6
+
+Polynomial: (0, 1, 2, 3, 4)
+init            len(seq)
+1               5
+2               5
+3               5
+4               5
+5               5
+6               5
+7               5
+8               5
+9               5
+10              5
+11              5
+12              5
+13              5
+14              5
+15              5
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We can see that, the first polynomial $x^4+x+1$ generates a maximum-length($2^4-1=15$) sequence, so it is a primitive polynomial. The second polynomial $x^4+x^2+1$ does not generate a maximum-length sequence and its sequence lengths depends on its initial values, so it is an irreducible polynomial. The third polynomial $x^4+x^3+x^2+x+1$ does not generate a maximum-length sequence, but its sequence length stays the same despite the changing initial values, so it is a reducible polynomial.&lt;/p&gt;
+
+&lt;h3 id=&quot;29&quot;&gt;2.9&lt;/h3&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Solutions to Understanding Cryptography Problems - Chapter 1</title>
@@ -40,7 +250,7 @@
 
 &lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
 
-&lt;p&gt;My solutions to the practice problems in the book “Understanding Cryptography: A Textbook for Students and Practitioners - Chapter 1”.&lt;/p&gt;
+&lt;p&gt;My solutions to the practice problems in “Understanding Cryptography: A Textbook for Students and Practitioners - Chapter 1”.&lt;/p&gt;
 
 &lt;p&gt;The solution scripts to some of the problems have been uploaded to GitHub, you can check them out at: &lt;a href=&quot;https://github.com/yype/UnderstandingCrypto&quot; target=&quot;_blank&quot;&gt;https://github.com/yype/UnderstandingCrypto&lt;/a&gt;.&lt;/p&gt;
 
@@ -48,7 +258,7 @@
 
 &lt;h3 id=&quot;11&quot;&gt;1.1&lt;/h3&gt;
 
-&lt;p&gt;(1) Computer the relative frequency of all letters in the ciphertext.&lt;/p&gt;
+&lt;p&gt;(1) Compute the relative frequency of all letters in the ciphertext.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[('r', 0.13003095975232198), ('b', 0.10526315789473684), ('m', 0.09597523219814241), ('k', 0.07585139318885449), ('j', 0.07430340557275542), ('w', 0.07275541795665634), ('i', 0.06346749226006192), ('p', 0.04643962848297214), ('u', 0.03715170278637771), ('d', 0.03560371517027864), ('h', 0.03560371517027864), ('v', 0.034055727554179564), ('x', 0.030959752321981424), ('y', 0.029411764705882353), ('n', 0.02631578947368421), ('s', 0.02631578947368421), ('t', 0.020123839009287926), ('l', 0.01238390092879257), ('q', 0.010835913312693499), ('o', 0.010835913312693499), ('e', 0.007739938080495356), ('a', 0.007739938080495356), ('c', 0.007739938080495356), ('f', 0.0015479876160990713), ('g', 0.0015479876160990713)]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -578,7 +788,7 @@ b_3=a_2b_1+b_2\bmod26=11\times5+7\bmod26\equiv10\bmod26\\
  </entry>
  
  <entry>
-   <title>N1CTF2020 n1vault, thoughts &amp; solutions</title>
+   <title>N1CTF2020 n1vault, Thoughts &amp; Solutions</title>
    <link href="http://localhost:4000/2020/10/23/n1vault"/>
    <updated>2020-10-23T00:00:00+08:00</updated>
    <id>http://localhost:4000/2020/10/23/n1vault</id>
@@ -1415,7 +1625,7 @@ Path DRDDDDRUURRRULURRDDDDDDR is ok
  </entry>
  
  <entry>
-   <title>D^3CTF2019 Ancient Game V2, thoughts &amp; solutions</title>
+   <title>D^3CTF2019 Ancient Game V2, Thoughts &amp; Solutions</title>
    <link href="http://localhost:4000/2020/02/20/ancient-game-v2"/>
    <updated>2020-02-20T00:00:00+08:00</updated>
    <id>http://localhost:4000/2020/02/20/Ancient-Game-V2</id>

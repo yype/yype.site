@@ -4,6 +4,7 @@ title: Solutions to Understanding Cryptography Problems - Chapter 1
 description: 
 summary: 
 tags: [Crypto, Understanding Cryptography]
+visible: 0
 ---
 
 * TOC
@@ -11,7 +12,7 @@ tags: [Crypto, Understanding Cryptography]
 
 ## Intro
 
-My solutions to the practice problems in the book "Understanding Cryptography: A Textbook for Students and Practitioners - Chapter 1". 
+My solutions to the practice problems in "Understanding Cryptography: A Textbook for Students and Practitioners - Chapter 1". 
 
 The solution scripts to some of the problems have been uploaded to GitHub, you can check them out at: [https://github.com/yype/UnderstandingCrypto](https://github.com/yype/UnderstandingCrypto){:target='_blank'}.
 
@@ -19,7 +20,7 @@ The solution scripts to some of the problems have been uploaded to GitHub, you c
 
 ### 1.1
 
-(1) Computer the relative frequency of all letters in the ciphertext.
+(1) Compute the relative frequency of all letters in the ciphertext.
 
 ```
 [('r', 0.13003095975232198), ('b', 0.10526315789473684), ('m', 0.09597523219814241), ('k', 0.07585139318885449), ('j', 0.07430340557275542), ('w', 0.07275541795665634), ('i', 0.06346749226006192), ('p', 0.04643962848297214), ('u', 0.03715170278637771), ('d', 0.03560371517027864), ('h', 0.03560371517027864), ('v', 0.034055727554179564), ('x', 0.030959752321981424), ('y', 0.029411764705882353), ('n', 0.02631578947368421), ('s', 0.02631578947368421), ('t', 0.020123839009287926), ('l', 0.01238390092879257), ('q', 0.010835913312693499), ('o', 0.010835913312693499), ('e', 0.007739938080495356), ('a', 0.007739938080495356), ('c', 0.007739938080495356), ('f', 0.0015479876160990713), ('g', 0.0015479876160990713)]
