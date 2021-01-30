@@ -255,7 +255,7 @@ $$
 
 We can see that there are 7 sequence states(the sequence length is 7). Therefore, *it's possible*, that the LFSR could be using a primitive polynomial of degree 3.
 
-> Note that we can never know if the key stream contains a larger repetend. Using the given information, we can only be sure that *an LFSR using a primitive polynomial of degree 3* could be possible. There is a possibility that an LFSR using a polynomial of a larger degree is actually used. Specifically for this problem, I'll just assume the degree is 3.
+> Note that we can never know if the key stream contains a larger repetend. Using the given information, we can only be sure that *an LFSR using a primitive polynomial of degree 3* could be a possible scenario. There is a possibility that an LFSR using a polynomial of a larger degree is actually used. Specifically for this problem, I'll just assume the degree is 3.
 
 
 (1) What is the degree m of the key stream generator?
@@ -339,3 +339,117 @@ I don't want to draw the circuit diagram :P
 
 I wrote a script to help with the key stream generation and the coefficient verification, see the corresponding solution script for more detail.
 
+### 2.11
+
+I find it quite annoying that these problems do not make it clear which endianness should be used :(
+
+For detailed solution to this problem, see the solution script.
+
+```
+chapt2> py .\p2.11.py
+bit order: old --> new
+cipher bits:
+010011111100000110100010000011010011110000001
+known plain bits:
+101100111101000
+known key stream bits:
+111111000001000
+init vec:
+111111
+A:
+[[1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 0], [1, 1, 1, 1, 0, 0], [1, 1, 1, 0, 0, 0], [1, 1, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0]]
+b:
+[0, 0, 0, 0, 0, 1]
+x:
+[1, 1, 0, 0, 0, 0]
+poly:
+[0, 1, 6]
+recovered key stream bits:
+111111000001000011000101001111010001110010010
+recovered plain bits:
+101100111101000101100111001100000010000010011
+recovered plain text:
+wpiwombat
+```
+
+(1) The initialization vector is `111111`.
+
+(2) The feedback coefficients are $p_0=1,p_1=1,p_{2,3,4,5}=0$, the polynomial is `(0, 1, 6)`.
+
+(3) The whole plain text is `wpiwombat`.
+
+(4) [Wombats are short-legged, muscular quadrupedal marsupials that are native to Australia.](https://en.wikipedia.org/wiki/Wombat){:target='_blank'}
+
+(5) Known-plaintext attack.
+
+### 2.12
+
+I implemented an ugly but straightforward version of Trivium using Python, based on the following diagram:
+
+![MyTrivium]({{ site.github.url }}/assets/UnderstandingCrypto/chapt2/MyTrivium.png)
+
+The solution script:
+
+```python
+class Trivium(object):
+    def __init__(self, iv, key):
+        self.A = iv & (2**80-1)
+        self.B = key & (2**80-1)
+        self.C = 0b111 << 108
+
+    def gen_seq(self, n):
+        def _bit(n, bit): return (n >> (bit-1)) & 1
+        A, B, C = self.A, self.B, self.C
+        outputs = []
+        for r in range(n):
+            Ao1 = _bit(A, 66)
+            Ao2 = _bit(A, 93)
+            Ao3 = _bit(A, 91) & _bit(A, 92)
+            Ao = Ao1 ^ Ao2 ^ Ao3
+
+            Bo1 = _bit(B, 69)
+            Bo2 = _bit(B, 84)
+            Bo3 = _bit(B, 82) & _bit(B, 83)
+            Bo = Bo1 ^ Bo2 ^ Bo3
+
+            Co1 = _bit(C, 66)
+            Co2 = _bit(C, 111)
+            Co3 = _bit(C, 109) & _bit(C, 110)
+            Co = Co1 ^ Co2 ^ Co3
+
+            output = Ao ^ Bo ^ Co
+            outputs.append(output)
+
+            Ai1 = _bit(A, 69)
+            Ai2 = Co
+            Ai = Ai1 ^ Ai2
+
+            Bi1 = _bit(B, 78)
+            Bi2 = Ao
+            Bi = Bi1 ^ Bi2
+
+            Ci1 = _bit(C, 87)
+            Ci2 = Bo
+            Ci = Ci1 ^ Ci2
+
+            A = ((A << 1) & (2**93-1)) | Ai
+            B = ((B << 1) & (2**84-1)) | Bi
+            C = ((C << 1) & (2**111-1)) | Ci
+
+        self.A, self.B, self.C = A, B, C
+        return outputs
+
+
+trivium = Trivium(0, 0)
+seq = trivium.gen_seq(70)
+print(seq)
+```
+
+It outputs as follows:
+
+```
+chapt2> py .\p2.12.py
+[0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0]
+```
+
+So the first 70 bits are $s_0=0,s_{1,2}=1,s_{3,4,...,66}=0,s_{67,68}=1,s_{69}=0$.
