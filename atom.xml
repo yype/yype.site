@@ -1,0 +1,2029 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>yype.site</title>
+ <link href="https://yype.site/atom.xml" rel="self"/>
+ <link href="https://yype.site/"/>
+ <updated>2021-01-31T11:23:01+00:00</updated>
+ <id>https://yype.site</id>
+ <author>
+   <name></name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>Solutions to Understanding Cryptography Problems - Chapter 2</title>
+   <link href="https://yype.site/2021/01/26/solutions-to-understanding-cryptography-problems-chapter2"/>
+   <updated>2021-01-26T00:00:00+00:00</updated>
+   <id>https://yype.site/2021/01/26/Solutions-to-Understanding-Cryptography-Problems-Chapter2</id>
+   <content type="html">&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#intro&quot; id=&quot;markdown-toc-intro&quot;&gt;Intro&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#problems&quot; id=&quot;markdown-toc-problems&quot;&gt;Problems&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#21&quot; id=&quot;markdown-toc-21&quot;&gt;2.1&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#22&quot; id=&quot;markdown-toc-22&quot;&gt;2.2&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#23&quot; id=&quot;markdown-toc-23&quot;&gt;2.3&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#24&quot; id=&quot;markdown-toc-24&quot;&gt;2.4&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#25&quot; id=&quot;markdown-toc-25&quot;&gt;2.5&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#26&quot; id=&quot;markdown-toc-26&quot;&gt;2.6&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#27&quot; id=&quot;markdown-toc-27&quot;&gt;2.7&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#28&quot; id=&quot;markdown-toc-28&quot;&gt;2.8&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#29&quot; id=&quot;markdown-toc-29&quot;&gt;2.9&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#210&quot; id=&quot;markdown-toc-210&quot;&gt;2.10&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#211&quot; id=&quot;markdown-toc-211&quot;&gt;2.11&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#212&quot; id=&quot;markdown-toc-212&quot;&gt;2.12&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+
+&lt;p&gt;My solutions to the practice problems in “Understanding Cryptography: A Textbook for Students and Practitioners - Chapter 2”.&lt;/p&gt;
+
+&lt;p&gt;The solution scripts to some of the problems have been uploaded to GitHub, you can check them out at: &lt;a href=&quot;https://github.com/yype/UnderstandingCrypto&quot; target=&quot;_blank&quot;&gt;https://github.com/yype/UnderstandingCrypto&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
+
+&lt;h3 id=&quot;21&quot;&gt;2.1&lt;/h3&gt;
+
+&lt;p&gt;(1) The key could look like a stream of letters from A~Z, which represent keys between 0~25.&lt;/p&gt;
+
+\[y_i=e_{k_i}(x_i)=x_i+k_i\bmod26\\
+x_i=d_{k_i}(y_i)=y_i-k_i\bmod26\\\]
+
+&lt;p&gt;(2) I found this problem strange at first, and later, according to the Internet, I found that the key provided in the book is wrong. The correct key should be &lt;code class=&quot;highlighter-rouge&quot;&gt;rsidpy dkawoy&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Solution script:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;enc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'bsaspp kkuosp'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'rsidpy dkawoy'&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# the key in the book is wrong
+&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;dec&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;enc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;enc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;' '&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;enc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;dec&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;dec&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;' '&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kaspar hauser
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(3) According to &lt;a href=&quot;https://en.wikipedia.org/wiki/Kaspar_Hauser&quot;&gt;this&lt;/a&gt;, it seems that Hauser died of a fatal stab wound on 17 December 1833.&lt;/p&gt;
+
+&lt;h3 id=&quot;22&quot;&gt;2.2&lt;/h3&gt;
+
+&lt;p&gt;(1) Life cycle of the key: Every single bit in the key should never be reused.&lt;/p&gt;
+
+&lt;p&gt;(2) Storage of the key during the life cycle: The key must be stored at both the sending and receiving end.&lt;/p&gt;
+
+&lt;p&gt;(3) Storage of the key after the life cycle: They must be destroyed since all former encrypted data will become vulunerable if these keys are leaked in the future.&lt;/p&gt;
+
+&lt;p&gt;(4) Key distribution: The safest way, in my point of view, is to make only 2 copies of the key in the world, and to distribute the keys physically(without being intercepted by any 3rd parties).&lt;/p&gt;
+
+&lt;p&gt;(5) Generation of the key: A TRNG should be used. Or else it will be the same as using a normal stream cipher along with a PRNG, and just distributing the key of the PRNG.&lt;/p&gt;
+
+&lt;h3 id=&quot;23&quot;&gt;2.3&lt;/h3&gt;
+
+&lt;p&gt;When 128 bits of the plaintext($x_0$~$x_{127}$) and their corresponding cipher bits($y_0$~$y_{127}$) are known to an attacker, he/she/it can easily calculate the key bits($k_0$~$k_{127}$) used in the encryption process:&lt;/p&gt;
+
+\[k_i=x_i\oplus y_i,i=0,1,...,127\]
+
+&lt;h3 id=&quot;24&quot;&gt;2.4&lt;/h3&gt;
+
+&lt;p&gt;The attacker will have no idea which key should be correct, so any brute-force attack is meaningless. Each key guessed can be used to decrypt the ciphertext, generating a plaintext(plaindata). There is no way the attacker can know which key is right and if the plaintext decrypted is the original one.&lt;/p&gt;
+
+&lt;h3 id=&quot;25&quot;&gt;2.5&lt;/h3&gt;
+
+&lt;p&gt;(1)&lt;/p&gt;
+
+\[(c_2=1,c_1=0,c_0=1)\\
+\text{}\\
+\begin{array}{|c|c c c|}
+\text{Clk} &amp;amp; FF_2 &amp;amp; FF_1 &amp;amp; FF_0=s_i \\
+0 &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 \\
+1 &amp;amp; 1 &amp;amp; 1 &amp;amp; 0 \\
+2 &amp;amp; 1 &amp;amp; 1 &amp;amp; 1 \\
+3 &amp;amp; 0 &amp;amp; 1 &amp;amp; 1 \\
+4 &amp;amp; 1 &amp;amp; 0 &amp;amp; 1 \\
+5 &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 \\
+6 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \\
+7 &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 \\
+\end{array}\\\]
+
+&lt;p&gt;So the sequence is (&lt;code class=&quot;highlighter-rouge&quot;&gt;0011101&lt;/code&gt;)*.&lt;/p&gt;
+
+&lt;p&gt;(2)&lt;/p&gt;
+
+\[(c_2=1,c_1=0,c_0=1)\\
+\text{}\\
+\begin{array}{|c|c c c|}
+\text{Clk} &amp;amp; FF_2 &amp;amp; FF_1 &amp;amp; FF_0=s_i \\
+0 &amp;amp; 0 &amp;amp; 1 &amp;amp; 1 \\
+1 &amp;amp; 1 &amp;amp; 0 &amp;amp; 1 \\
+2 &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 \\
+3 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \\
+4 &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 \\
+5 &amp;amp; 1 &amp;amp; 1 &amp;amp; 0 \\
+6 &amp;amp; 1 &amp;amp; 1 &amp;amp; 1 \\
+7 &amp;amp; 0 &amp;amp; 1 &amp;amp; 1 \\
+\end{array}\\\]
+
+&lt;p&gt;So the sequence is (&lt;code class=&quot;highlighter-rouge&quot;&gt;1101001&lt;/code&gt;)*.&lt;/p&gt;
+
+&lt;p&gt;(3) &lt;strong&gt;a)&lt;/strong&gt; Their periods are the same. &lt;strong&gt;b)&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;S2&lt;/code&gt; can be viewed as &lt;code class=&quot;highlighter-rouge&quot;&gt;ROL(S1, 3)&lt;/code&gt;, where &lt;code class=&quot;highlighter-rouge&quot;&gt;S1/S2&lt;/code&gt; represent the repetends of the first and second sequence.&lt;/p&gt;
+
+&lt;h3 id=&quot;26&quot;&gt;2.6&lt;/h3&gt;
+
+&lt;p&gt;One possible attack: I will need to know 25 bytes(letters), which is &lt;code class=&quot;highlighter-rouge&quot;&gt;200(bits) / 8(bits/byte)&lt;/code&gt;, of the ciphertext and their corresponding plaintext. Then I will be able to calculate 200 bits of the key sequence used($k_i=\text{plainbit}_i\oplus\text{cipherbit}_i$).&lt;/p&gt;
+
+&lt;p&gt;After that, all left to do is to determine the actual keysize. We can simply run several brute-force decryptions, starting from the first plaintext bit we know, using the first $k$ bits of the 200 key bits calculated, where $k=150,151,…,200$.&lt;/p&gt;
+
+&lt;p&gt;It should be noted that if the keysize used is not correct, there is a great chance that the data decrypted is not readable(printable) ASCII text. As a result, once we successfully decrypt the ciphertext and get a readable plaintext after the 25th byte, we know what the actual keysize is.&lt;/p&gt;
+
+&lt;h3 id=&quot;27&quot;&gt;2.7&lt;/h3&gt;
+
+&lt;p&gt;The chosen LFSR’s polynomial is &lt;code class=&quot;highlighter-rouge&quot;&gt;(0,1,3,4,8)&lt;/code&gt;. I wrote a simple script to help me with the calculation, and the resulting first two output bytes can be viewed as a little endian number &lt;code class=&quot;highlighter-rouge&quot;&gt;0x90ff&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;chapt2&amp;gt; py .\p2.7.py
+0x90ff
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;28&quot;&gt;2.8&lt;/h3&gt;
+
+&lt;p&gt;(1) Draw the corresponding LFSR for each of the three polynomials.&lt;/p&gt;
+
+&lt;p&gt;I don’t want to draw them :P&lt;/p&gt;
+
+&lt;p&gt;(2) I wrote a script to calculate all the possible initial values and their corresponding sequence lengh, it outputs as follows:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;chapt2&amp;gt; py .\p2.8.py
+Polynomial: (0, 1, 4)
+init            len(seq)
+1               15
+2               15
+3               15
+4               15
+5               15
+6               15
+7               15
+8               15
+9               15
+10              15
+11              15
+12              15
+13              15
+14              15
+15              15
+
+Polynomial: (0, 2, 4)
+init            len(seq)
+1               6
+2               6
+3               6
+4               6
+5               6
+6               3
+7               6
+8               6
+9               6
+10              6
+11              3
+12              6
+13              3
+14              6
+15              6
+
+Polynomial: (0, 1, 2, 3, 4)
+init            len(seq)
+1               5
+2               5
+3               5
+4               5
+5               5
+6               5
+7               5
+8               5
+9               5
+10              5
+11              5
+12              5
+13              5
+14              5
+15              5
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We can see that, the first polynomial $x^4+x+1$ can generate a maximum-length($2^4-1=15$) sequence, so it is a primitive polynomial. The second polynomial $x^4+x^2+1$ does not generate a maximum-length sequence and its sequence length depends on its initial value, so it is an irreducible polynomial. The third polynomial $x^4+x^3+x^2+x+1$ does not generate a maximum-length sequence, but its sequence length stays the same despite the changing initial value, so it is a reducible polynomial.&lt;/p&gt;
+
+&lt;h3 id=&quot;29&quot;&gt;2.9&lt;/h3&gt;
+
+&lt;p&gt;(1) $256\times2=512\text{(bits)}$.&lt;/p&gt;
+
+&lt;p&gt;(2) Let the known plaintext bits be given by $x_0,x_1,…,x_{511}$ and the corresponding ciphertext bits by $y_0,y_1,…,y_{511}$. With these 512 pairs of plaintext and ciphertext bits, we can reconstruct the first 512 key stream bits:&lt;/p&gt;
+
+\[s_i=x_i\oplus y_i,i=0,1,...,511\]
+
+&lt;p&gt;Our goal is to find the key bits given by the feedback coefficients $p_i$. The relationship between the unknown key bits $p_i$ and the key stream bits $s_i$ can be described as follows:&lt;/p&gt;
+
+\[s_{i+256}=\sum_{j=0}^{255}{p_j\cdot s_{i+j}}, i=0,1,...,255\]
+
+&lt;p&gt;This actually represents 256 linearly independent formulae, which contain 256 unknown variables $p_0,p_1,…,p_{255}$. This system can be easily solved using Gaussian elimination, matrix inversion or any other algorithm for solving systems of linear equations.&lt;/p&gt;
+
+&lt;p&gt;(3.a) The key is $p_0,p_1,…,p_{255}$.&lt;/p&gt;
+
+&lt;p&gt;(3.b) If we use the initial contents of the LFSR as the key, the attacker can get the key almost without performing any attack since the first 256 bits of the &lt;strong&gt;key stream bits&lt;/strong&gt; are exactly the same as the initial content bits. If we use the initial contents of the LFSR as part of the key, the part that takes actual effect will be just the initial content, so any other bits in the key will be useless, then the situation becomes no different as just using the initial contents as the key.&lt;/p&gt;
+
+&lt;h3 id=&quot;210&quot;&gt;2.10&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Plaintext bits:  `1001 0010 0110 1101 1001 0010 0110`
+Ciphertext bits: `1011 1100 0011 0001 0010 1011 0001` 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;So we can get the key stream bits: &lt;code class=&quot;highlighter-rouge&quot;&gt;0010 1110 0101 1100 1011 1001 0111&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;We can clearly observe its repetend: &lt;code class=&quot;highlighter-rouge&quot;&gt;0010111&lt;/code&gt;. Let’s suppose it’s generated by a primitive polynomial, then the degree should be $m=\log_2{(7+1)}=3$. Next we test if there are indeed $2^m-1=7$ sequence states. As for the key stream bits, the states are as follows:&lt;/p&gt;
+
+\[\begin{array}{|c|c c c|}
+\text{Clk} &amp;amp; FF_2 &amp;amp; FF_1 &amp;amp; FF_0=s_i \\
+0 &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 \\
+1 &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 \\
+2 &amp;amp; 1 &amp;amp; 0 &amp;amp; 1 \\
+3 &amp;amp; 1 &amp;amp; 1 &amp;amp; 0 \\
+4 &amp;amp; 1 &amp;amp; 1 &amp;amp; 1 \\
+5 &amp;amp; 0 &amp;amp; 1 &amp;amp; 1 \\
+6 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \\
+7 &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 \\
+\end{array}\\\]
+
+&lt;p&gt;We can see that there are 7 sequence states(the sequence length is 7). Therefore, &lt;em&gt;it’s possible&lt;/em&gt;, that the LFSR could be using a primitive polynomial of degree 3.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note that we can never know if the key stream contains a larger repetend. Using the given information, we can only be sure that &lt;em&gt;an LFSR using a primitive polynomial of degree 3&lt;/em&gt; could be a possible scenario. There is a possibility that an LFSR using a polynomial of a larger degree is actually used. Specifically for this problem, I’ll just assume the degree is 3.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;(1) What is the degree m of the key stream generator?&lt;/p&gt;
+
+&lt;p&gt;It’s 3.&lt;/p&gt;
+
+&lt;p&gt;(2) What is the initialization vector?&lt;/p&gt;
+
+&lt;p&gt;It’s &lt;code class=&quot;highlighter-rouge&quot;&gt;100&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;(3) Determine the feedback coefficients of the LFSR.&lt;/p&gt;
+
+&lt;p&gt;To break the cipher we only need to use $2m=6$ key stream bits, let’s grab the first 6 bits of the key stream. Let the coefficients be $p_0,p_1,p_2$, then we have:&lt;/p&gt;
+
+\[s_3=s_0p_0+s_1p_1+s_2p_2\\
+s_4=s_1p_0+s_2p_1+s_3p_2\\
+s_5=s_2p_0+s_3p_1+s_4p_2\]
+
+&lt;p&gt;which can be denoted as:&lt;/p&gt;
+
+\[\begin{bmatrix}
+0 &amp;amp; 0 &amp;amp; 1\\
+0 &amp;amp; 1 &amp;amp; 0\\
+1 &amp;amp; 0 &amp;amp; 1
+\end{bmatrix}
+\begin{bmatrix}
+p_0\\ 
+p_1\\
+p_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+0\\1\\1
+\end{bmatrix}\]
+
+&lt;p&gt;We can calculate $P$ by:&lt;/p&gt;
+
+\[\begin{aligned}
+P=
+\begin{bmatrix}
+p_0\\ 
+p_1\\
+p_2
+\end{bmatrix}
+&amp;amp;=\begin{bmatrix}
+0 &amp;amp; 0 &amp;amp; 1\\
+0 &amp;amp; 1 &amp;amp; 0\\
+1 &amp;amp; 0 &amp;amp; 1
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+0\\1\\1
+\end{bmatrix}\\
+&amp;amp;=
+\begin{bmatrix}
+-1&amp;amp;0&amp;amp;1\\
+0&amp;amp;1&amp;amp;0\\
+1&amp;amp;0&amp;amp;0
+\end{bmatrix}
+\begin{bmatrix}
+0\\1\\1
+\end{bmatrix}\\
+&amp;amp;=
+\begin{bmatrix}
+1\\1\\0
+\end{bmatrix}
+\end{aligned}\]
+
+&lt;p&gt;So the coefficients are: $p_0=1,p_1=1,p_2=0$, the polynomial used is $x^3+x+1$.&lt;/p&gt;
+
+&lt;p&gt;(4.a)&lt;/p&gt;
+
+&lt;p&gt;I don’t want to draw the circuit diagram :P&lt;/p&gt;
+
+&lt;p&gt;(4.b)&lt;/p&gt;
+
+&lt;p&gt;I wrote a script to help with the key stream generation and the coefficient verification, see the corresponding solution script for more detail.&lt;/p&gt;
+
+&lt;h3 id=&quot;211&quot;&gt;2.11&lt;/h3&gt;
+
+&lt;p&gt;I find it quite annoying that these problems do not make it clear which endianness should be used :(&lt;/p&gt;
+
+&lt;p&gt;For detailed solution to this problem, see the solution script.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;chapt2&amp;gt; py .\p2.11.py
+bit order: old --&amp;gt; new
+cipher bits:
+010011111100000110100010000011010011110000001
+known plain bits:
+101100111101000
+known key stream bits:
+111111000001000
+init vec:
+111111
+A:
+[[1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 0], [1, 1, 1, 1, 0, 0], [1, 1, 1, 0, 0, 0], [1, 1, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0]]
+b:
+[0, 0, 0, 0, 0, 1]
+x:
+[1, 1, 0, 0, 0, 0]
+poly:
+[0, 1, 6]
+recovered key stream bits:
+111111000001000011000101001111010001110010010
+recovered plain bits:
+101100111101000101100111001100000010000010011
+recovered plain text:
+wpiwombat
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(1) The initialization vector is &lt;code class=&quot;highlighter-rouge&quot;&gt;111111&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;(2) The feedback coefficients are $p_0=1,p_1=1,p_{2,3,4,5}=0$, the polynomial is &lt;code class=&quot;highlighter-rouge&quot;&gt;(0, 1, 6)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;(3) The whole plain text is &lt;code class=&quot;highlighter-rouge&quot;&gt;wpiwombat&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;(4) &lt;a href=&quot;https://en.wikipedia.org/wiki/Wombat&quot; target=&quot;_blank&quot;&gt;Wombats are short-legged, muscular quadrupedal marsupials that are native to Australia.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;(5) Known-plaintext attack.&lt;/p&gt;
+
+&lt;h3 id=&quot;212&quot;&gt;2.12&lt;/h3&gt;
+
+&lt;p&gt;I implemented an ugly but straightforward version of Trivium using Python, based on the following diagram:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/UnderstandingCrypto/chapt2/MyTrivium.png&quot; alt=&quot;MyTrivium&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The solution script:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Trivium&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mb&quot;&gt;0b111&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;108&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;gen_seq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;C&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;outputs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Ao1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;66&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Ao2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;93&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Ao3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;91&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;92&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Ao&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Ao1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Ao2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Ao3&lt;/span&gt;
+
+            &lt;span class=&quot;n&quot;&gt;Bo1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;69&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Bo2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;84&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Bo3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;82&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;83&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Bo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bo1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bo2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bo3&lt;/span&gt;
+
+            &lt;span class=&quot;n&quot;&gt;Co1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;66&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Co2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;111&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Co3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;109&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;110&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Co&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Co1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Co2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Co3&lt;/span&gt;
+
+            &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Ao&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Co&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;outputs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+            &lt;span class=&quot;n&quot;&gt;Ai1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;69&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Ai2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Co&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Ai&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Ai1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Ai2&lt;/span&gt;
+
+            &lt;span class=&quot;n&quot;&gt;Bi1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;78&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Bi2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Ao&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Bi&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bi1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bi2&lt;/span&gt;
+
+            &lt;span class=&quot;n&quot;&gt;Ci1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;87&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Ci2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bo&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Ci&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Ci1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Ci2&lt;/span&gt;
+
+            &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;93&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Ai&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;84&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bi&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;C&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;111&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Ci&lt;/span&gt;
+
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;C&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outputs&lt;/span&gt;
+
+
+&lt;span class=&quot;n&quot;&gt;trivium&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Trivium&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;seq&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;trivium&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gen_seq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;70&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;seq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It outputs as follows:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;chapt2&amp;gt; py .\p2.12.py
+[0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So the first 70 bits are $s_0=0,s_{1,2}=1,s_{3,4,…,66}=0,s_{67,68}=1,s_{69}=0$.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Solutions to Understanding Cryptography Problems - Chapter 1</title>
+   <link href="https://yype.site/2021/01/25/solutions-to-understanding-cryptography-problems-chapter1"/>
+   <updated>2021-01-25T00:00:00+00:00</updated>
+   <id>https://yype.site/2021/01/25/Solutions-to-Understanding-Cryptography-Problems-Chapter1</id>
+   <content type="html">&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#intro&quot; id=&quot;markdown-toc-intro&quot;&gt;Intro&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#problems&quot; id=&quot;markdown-toc-problems&quot;&gt;Problems&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#11&quot; id=&quot;markdown-toc-11&quot;&gt;1.1&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#12&quot; id=&quot;markdown-toc-12&quot;&gt;1.2&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#13&quot; id=&quot;markdown-toc-13&quot;&gt;1.3&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#14&quot; id=&quot;markdown-toc-14&quot;&gt;1.4&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#15&quot; id=&quot;markdown-toc-15&quot;&gt;1.5&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#16&quot; id=&quot;markdown-toc-16&quot;&gt;1.6&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#17&quot; id=&quot;markdown-toc-17&quot;&gt;1.7&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#18&quot; id=&quot;markdown-toc-18&quot;&gt;1.8&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#19&quot; id=&quot;markdown-toc-19&quot;&gt;1.9&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#110&quot; id=&quot;markdown-toc-110&quot;&gt;1.10&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#111&quot; id=&quot;markdown-toc-111&quot;&gt;1.11&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#112&quot; id=&quot;markdown-toc-112&quot;&gt;1.12&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#113&quot; id=&quot;markdown-toc-113&quot;&gt;1.13&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#114&quot; id=&quot;markdown-toc-114&quot;&gt;1.14&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+
+&lt;p&gt;My solutions to the practice problems in “Understanding Cryptography: A Textbook for Students and Practitioners - Chapter 1”.&lt;/p&gt;
+
+&lt;p&gt;The solution scripts to some of the problems have been uploaded to GitHub, you can check them out at: &lt;a href=&quot;https://github.com/yype/UnderstandingCrypto&quot; target=&quot;_blank&quot;&gt;https://github.com/yype/UnderstandingCrypto&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
+
+&lt;h3 id=&quot;11&quot;&gt;1.1&lt;/h3&gt;
+
+&lt;p&gt;(1) Compute the relative frequency of all letters in the ciphertext.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[('r', 0.13003095975232198), ('b', 0.10526315789473684), ('m', 0.09597523219814241), ('k', 0.07585139318885449), ('j', 0.07430340557275542), ('w', 0.07275541795665634), ('i', 0.06346749226006192), ('p', 0.04643962848297214), ('u', 0.03715170278637771), ('d', 0.03560371517027864), ('h', 0.03560371517027864), ('v', 0.034055727554179564), ('x', 0.030959752321981424), ('y', 0.029411764705882353), ('n', 0.02631578947368421), ('s', 0.02631578947368421), ('t', 0.020123839009287926), ('l', 0.01238390092879257), ('q', 0.010835913312693499), ('o', 0.010835913312693499), ('e', 0.007739938080495356), ('a', 0.007739938080495356), ('c', 0.007739938080495356), ('f', 0.0015479876160990713), ('g', 0.0015479876160990713)]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(2) Decrypt the ciphertext.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;because the practice of the basic movements of kata is
+the focus and mastery of self is the essence of
+matsubayashi ryu karate do i shall try to elucidate the
+movements of the kata according to my interpretation
+based on forty years of study
+
+it is not an easy task to explain each movement and its
+significance and some must remain unexplained to give a
+complete explanation one would have to be qualified and
+inspired to such an extent that he could reach the state
+of enlightened mind capable of recognizing soundless
+sound and shapeless shape i do not deem myself the final
+authority but my experience with kata has left no doubt
+that the following is the proper application and
+interpretation i offer my theories in the hope that the
+essence of okinawan karate will remain intact
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The decryption process involves a little bit of manual tweaking, as can be seen in the solution script output:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Freqs in the text -&amp;gt; freqs of letters in the alphabet
+('r', 0.13003095975232198) -&amp;gt; ('e', 0.127)
+('b', 0.10526315789473684) -&amp;gt; ('t', 0.0906)
+('m', 0.09597523219814241) -&amp;gt; ('a', 0.0817)
+('k', 0.07585139318885449) -&amp;gt; ('o', 0.0751)
+('j', 0.07430340557275542) -&amp;gt; ('i', 0.0697)
+('w', 0.07275541795665634) -&amp;gt; ('n', 0.0675)
+('i', 0.06346749226006192) -&amp;gt; ('s', 0.0633)
+('p', 0.04643962848297214) -&amp;gt; ('h', 0.0609)
+('u', 0.03715170278637771) -&amp;gt; ('r', 0.0599)
+('d', 0.03560371517027864) -&amp;gt; ('d', 0.0425)
+('h', 0.03560371517027864) -&amp;gt; ('l', 0.0403)
+('v', 0.034055727554179564) -&amp;gt; ('c', 0.0278)
+('x', 0.030959752321981424) -&amp;gt; ('u', 0.0276)
+('y', 0.029411764705882353) -&amp;gt; ('m', 0.02414)
+('n', 0.02631578947368421) -&amp;gt; ('w', 0.0236)
+('s', 0.02631578947368421) -&amp;gt; ('f', 0.0223)
+('t', 0.020123839009287926) -&amp;gt; ('g', 0.0202)
+('l', 0.01238390092879257) -&amp;gt; ('y', 0.0197)
+('q', 0.010835913312693499) -&amp;gt; ('p', 0.0193)
+('o', 0.010835913312693499) -&amp;gt; ('b', 0.015)
+('e', 0.007739938080495356) -&amp;gt; ('v', 0.0098)
+('a', 0.007739938080495356) -&amp;gt; ('k', 0.0077)
+('c', 0.007739938080495356) -&amp;gt; ('j', 0.0015)
+('f', 0.0015479876160990713) -&amp;gt; ('x', 0.0015)
+('g', 0.0015479876160990713) -&amp;gt; ('q', 0.001)
+
+Trying to decipher:
+yecawse the fractnce iu the yasnc mivemeots iu pata ns
+the uicws aod masterg iu selu ns the esseoce iu
+matswyagashn rgw parate di n shall trg ti elwcndate the
+mivemeots iu the pata accirdnob ti mg noterfretatnio
+yased io uirtg gears iu stwdg
+
+nt ns oit ao easg tasp ti ekflano each mivemeot aod nts
+snbonuncaoce aod sime mwst remano woekflanoed ti bnve a
+cimflete ekflaoatnio ioe jiwld have ti ye xwalnuned aod
+nosfnred ti swch ao ekteot that he ciwld reach the state
+iu eolnbhteoed mnod cafayle iu recibonqnob siwodless
+siwod aod shafeless shafe n di oit deem mgselu the unoal
+awthirntg ywt mg ekferneoce jnth pata has leut oi diwyt
+that the uillijnob ns the frifer afflncatnio aod
+noterfretatnio n iuuer mg theirnes no the hife that the
+esseoce iu ipnoajao parate jnll remano notact
+
+Doing corrections manually:
+l -&amp;gt; y ==&amp;gt; l -&amp;gt; b
+        Conflit: l -&amp;gt; b
+        Conflit: o -&amp;gt; b
+q -&amp;gt; p ==&amp;gt; q -&amp;gt; k
+        Conflit: l -&amp;gt; b
+        Conflit: q -&amp;gt; k
+        Conflit: o -&amp;gt; b
+        Conflit: a -&amp;gt; k
+t -&amp;gt; g ==&amp;gt; t -&amp;gt; y
+        Conflit: l -&amp;gt; b
+        Conflit: q -&amp;gt; k
+        Conflit: o -&amp;gt; b
+        Conflit: a -&amp;gt; k
+n -&amp;gt; w ==&amp;gt; n -&amp;gt; u
+        Conflit: x -&amp;gt; u
+        Conflit: n -&amp;gt; u
+        Conflit: l -&amp;gt; b
+        Conflit: q -&amp;gt; k
+        Conflit: o -&amp;gt; b
+        Conflit: a -&amp;gt; k
+w -&amp;gt; n ==&amp;gt; w -&amp;gt; i
+        Conflit: j -&amp;gt; i
+        Conflit: w -&amp;gt; i
+        Conflit: x -&amp;gt; u
+        Conflit: n -&amp;gt; u
+        Conflit: l -&amp;gt; b
+        Conflit: q -&amp;gt; k
+        Conflit: o -&amp;gt; b
+        Conflit: a -&amp;gt; k
+j -&amp;gt; i ==&amp;gt; j -&amp;gt; o
+        Conflit: k -&amp;gt; o
+        Conflit: j -&amp;gt; o
+        Conflit: x -&amp;gt; u
+        Conflit: n -&amp;gt; u
+        Conflit: l -&amp;gt; b
+        Conflit: q -&amp;gt; k
+        Conflit: o -&amp;gt; b
+        Conflit: a -&amp;gt; k
+k -&amp;gt; o ==&amp;gt; k -&amp;gt; n
+        Conflit: x -&amp;gt; u
+        Conflit: n -&amp;gt; u
+        Conflit: l -&amp;gt; b
+        Conflit: q -&amp;gt; k
+        Conflit: o -&amp;gt; b
+        Conflit: a -&amp;gt; k
+s -&amp;gt; f ==&amp;gt; s -&amp;gt; p
+        Conflit: x -&amp;gt; u
+        Conflit: n -&amp;gt; u
+        Conflit: l -&amp;gt; b
+        Conflit: q -&amp;gt; k
+        Conflit: o -&amp;gt; b
+        Conflit: a -&amp;gt; k
+c -&amp;gt; j ==&amp;gt; c -&amp;gt; w
+        Conflit: x -&amp;gt; u
+        Conflit: n -&amp;gt; u
+        Conflit: l -&amp;gt; b
+        Conflit: q -&amp;gt; k
+        Conflit: o -&amp;gt; b
+        Conflit: a -&amp;gt; k
+x -&amp;gt; u ==&amp;gt; x -&amp;gt; f
+        Conflit: l -&amp;gt; b
+        Conflit: q -&amp;gt; k
+        Conflit: o -&amp;gt; b
+        Conflit: a -&amp;gt; k
+a -&amp;gt; k ==&amp;gt; a -&amp;gt; x
+        Conflit: l -&amp;gt; b
+        Conflit: o -&amp;gt; b
+        Conflit: a -&amp;gt; x
+        Conflit: f -&amp;gt; x
+o -&amp;gt; b ==&amp;gt; o -&amp;gt; g
+        Conflit: a -&amp;gt; x
+        Conflit: f -&amp;gt; x
+g -&amp;gt; q ==&amp;gt; g -&amp;gt; z
+        Conflit: a -&amp;gt; x
+        Conflit: f -&amp;gt; x
+f -&amp;gt; x ==&amp;gt; f -&amp;gt; q
+        Check ok
+
+Corresponding words:
+[('lrvmnir', 'because'), ('bpr', 'the'), ('sumvbwvr', 'practice'), ('jx', 'of'), ('bpr', 'the'), ('lmiwv', 'basic'), ('yjeryrkbi', 'movements'), ('jx', 'of'), ('qmbm', 'kata'), ('wi', 'is'), ('bpr', 'the'), ('xjvni', 'focus'), ('mkd', 'and'), ('ymibrut', 'mastery'), ('jx', 'of'), ('irhx', 'self'), ('wi', 'is'), ('bpr', 'the'), ('riirkvr', 'essence'), ('jx', 'of'), ('ymbinlmtmipw', 'matsubayashi'), ('utn', 'ryu'), ('qmumbr', 'karate'), ('dj', 'do'), ('w', 'i'), ('ipmhh', 'shall'), ('but', 'try'), ('bj', 'to'), ('rhnvwdmbr', 'elucidate'), ('bpr', 'the'), ('yjeryrkbi', 'movements'), ('jx', 'of'), ('bpr', 'the'), ('qmbm', 'kata'), ('mvvjudwko', 'according'), ('bj', 'to'), ('yt', 'my'), ('wkbrusurbmbwjk', 'interpretation'), ('lmird', 'based'), ('jk', 'on'), ('xjubt', 'forty'), ('trmui', 'years'), ('jx', 'of'), ('ibndt', 'study'), ('wb', 'it'), ('wi', 'is'), ('kjb', 'not'), ('mk', 'an'), ('rmit', 'easy'), ('bmiq', 'task'), ('bj', 'to'), ('rashmwk', 'explain'), ('rmvp', 'each'), ('yjeryrkb', 'movement'), ('mkd', 'and'), ('wbi', 'its'), ('iwokwxwvmkvr', 'significance'), ('mkd', 'and'), ('ijyr', 'some'), ('ynib', 'must'), ('urymwk', 'remain'), ('nkrashmwkrd', 'unexplained'), ('bj', 'to'), ('ower', 'give'), ('m', 'a'), ('vjyshrbr', 'complete'), ('rashmkmbwjk', 'explanation'), ('jkr', 'one'), ('cjnhd', 'would'), ('pmer', 'have'), ('bj', 'to'), ('lr', 'be'), ('fnmhwxwrd', 'qualified'), ('mkd', 'and'), ('wkiswurd', 'inspired'), ('bj', 'to'), ('invp', 'such'), ('mk', 'an'), ('rabrkb', 'extent'), ('bpmb', 'that'), ('pr', 'he'), ('vjnhd', 'could'), ('urmvp', 'reach'), ('bpr', 'the'), ('ibmbr', 'state'), ('jx', 'of'), ('rkhwopbrkrd', 'enlightened'), ('ywkd', 'mind'), ('vmsmlhr', 'capable'), ('jx', 'of'), ('urvjokwgwko', 'recognizing'), ('ijnkdhrii', 'soundless'), ('ijnkd', 'sound'), ('mkd', 'and'), ('ipmsrhrii', 'shapeless'), ('ipmsr', 'shape'), ('w', 'i'), ('dj', 'do'), ('kjb', 'not'), ('drry', 'deem'), ('ytirhx', 'myself'), ('bpr', 'the'), ('xwkmh', 'final'), ('mnbpjuwbt', 'authority'), ('lnb', 'but'), ('yt', 'my'), ('rasruwrkvr', 'experience'), ('cwbp', 'with'), ('qmbm', 'kata'), ('pmi', 'has'), ('hrxb', 'left'), ('kj', 'no'), ('djnlb', 'doubt'), ('bpmb', 'that'), ('bpr', 'the'), ('xjhhjcwko', 'following'), ('wi', 'is'), ('bpr', 'the'), ('sujsru', 'proper'), ('msshwvmbwjk', 'application'), ('mkd', 'and'), ('wkbrusurbmbwjk', 'interpretation'), ('w', 'i'), ('jxxru', 'offer'), ('yt', 'my'), ('bprjuwri', 'theories'), ('wk', 'in'), ('bpr', 'the'), ('pjsr', 'hope'), ('bpmb', 'that'), ('bpr', 'the'), ('riirkvr', 'essence'), ('jx', 'of'), ('jqwkmcmk', 'okinawan'), ('qmumbr', 'karate'), ('cwhh', 'will'), ('urymwk', 'remain'), ('wkbmvb', 'intact')]
+
+Deciphered text:
+because the practice of the basic movements of kata is
+the focus and mastery of self is the essence of
+matsubayashi ryu karate do i shall try to elucidate the
+movements of the kata according to my interpretation
+based on forty years of study
+
+it is not an easy task to explain each movement and its
+significance and some must remain unexplained to give a
+complete explanation one would have to be qualified and
+inspired to such an extent that he could reach the state
+of enlightened mind capable of recognizing soundless
+sound and shapeless shape i do not deem myself the final
+authority but my experience with kata has left no doubt
+that the following is the proper application and
+interpretation i offer my theories in the hope that the
+essence of okinawan karate will remain intact
+
+Key maps:
+rbmkjwipudhvxynstlqoeacfg
+etanoishrdlcfmupybkgvxwqz
+r 0.13003095975232198 -&amp;gt; e 0.127
+b 0.10526315789473684 -&amp;gt; t 0.0906
+m 0.09597523219814241 -&amp;gt; a 0.0817
+k 0.07585139318885449 -&amp;gt; n 0.0675
+j 0.07430340557275542 -&amp;gt; o 0.0751
+w 0.07275541795665634 -&amp;gt; i 0.0697
+i 0.06346749226006192 -&amp;gt; s 0.0633
+p 0.04643962848297214 -&amp;gt; h 0.0609
+u 0.03715170278637771 -&amp;gt; r 0.0599
+d 0.03560371517027864 -&amp;gt; d 0.0425
+h 0.03560371517027864 -&amp;gt; l 0.0403
+v 0.034055727554179564 -&amp;gt; c 0.0278
+x 0.030959752321981424 -&amp;gt; f 0.0223
+y 0.029411764705882353 -&amp;gt; m 0.02414
+n 0.02631578947368421 -&amp;gt; u 0.0276
+s 0.02631578947368421 -&amp;gt; p 0.0193
+t 0.020123839009287926 -&amp;gt; y 0.0197
+l 0.01238390092879257 -&amp;gt; b 0.015
+q 0.010835913312693499 -&amp;gt; k 0.0077
+o 0.010835913312693499 -&amp;gt; g 0.0202
+e 0.007739938080495356 -&amp;gt; v 0.0098
+a 0.007739938080495356 -&amp;gt; x 0.0015
+c 0.007739938080495356 -&amp;gt; w 0.0236
+f 0.0015479876160990713 -&amp;gt; q 0.001
+g 0.0015479876160990713 -&amp;gt; z 0.0007
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(3) It’s from “Essence of Okinawan Karate-Do” by Shoshin Nagamine.&lt;/p&gt;
+
+&lt;h3 id=&quot;12&quot;&gt;1.2&lt;/h3&gt;
+
+&lt;p&gt;Decipher the following ciphertext encoded with a shift cipher:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xultpaajcxitltlxaarpjhtiwtgxktghidhipxciwtvgtpilpit
+ghlxiwiwtxgqadds.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(1) First we calculate the frequency of each letter in the ciphertext:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[('t', 10), ('i', 9), ('x', 7), ('l', 5), ('p', 5), ('a', 5), ('g', 5), ('h', 4), ('w', 4), ('d', 3), ('j', 2), ('c', 2), ('u', 1), ('r', 1), ('k', 1), ('v', 1), ('q', 1), ('s', 1)]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As can be seen, letter &lt;code class=&quot;highlighter-rouge&quot;&gt;t&lt;/code&gt; appears mostly in the ciphertext, which corresponds to the mostly appearing letter &lt;code class=&quot;highlighter-rouge&quot;&gt;e&lt;/code&gt; in the alphabet. So now we know &lt;code class=&quot;highlighter-rouge&quot;&gt;e&lt;/code&gt; has probably been transformed to &lt;code class=&quot;highlighter-rouge&quot;&gt;t&lt;/code&gt;, and the shift number is &lt;code class=&quot;highlighter-rouge&quot;&gt;ord('t') - ord('e')&lt;/code&gt; which is 15. After trying 15 as the shift number, I successfully deciphered the ciphertext, so I identified only one letter.&lt;/p&gt;
+
+&lt;p&gt;(2) Using 15 as the shift number:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ifweallunitewewillcausetheriverstostainthegreatwate
+rswiththeirblood.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After manually inserting some spaces between words:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if we all unite we will cause the rivers to stain the great waters with their blood.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(3) It’s from Tecumseh’s speech to the Osages.&lt;/p&gt;
+
+&lt;h3 id=&quot;13&quot;&gt;1.3&lt;/h3&gt;
+
+&lt;p&gt;(1) ASICs that can run in parallel:&lt;/p&gt;
+
+\[\frac{1000000}{(50\times2)}=10000\]
+
+&lt;p&gt;Seconds it takes to do an average key search:&lt;/p&gt;
+
+\[\frac{2^{128-1}}{(10000\times5\times10^8)}=3.40282\times 10^{25} \\
+3.40282\times 10^{25} secs \approx 1.07903\times 10^{18} years\]
+
+&lt;p&gt;This is much longer than the age of the universe ($\approx10^8$ times).&lt;/p&gt;
+
+&lt;p&gt;(2) Represent the number of Moore’s Law iterations as $x$, we can get the following equation:&lt;/p&gt;
+
+\[\frac{2^{128-1}}{\frac{1000000}{(50\times2)}\times(5\times10^8)\times2^x}=24\times60\times60
+\\
+x=68.4162
+\\
+\frac{18}{12}\times68.4162\approx102.624\ (years)\]
+
+&lt;p&gt;So it’ll take approximately 103 years.&lt;/p&gt;
+
+&lt;h3 id=&quot;14&quot;&gt;1.4&lt;/h3&gt;
+
+&lt;p&gt;(1) Size of the key space that can be constructed be the specified passwords:&lt;/p&gt;
+
+\[128^8=2^{56}\]
+
+&lt;p&gt;(2) The corresponding key length in bits: $\log_2{2^{56}}=56$.&lt;/p&gt;
+
+&lt;p&gt;(3) The corresponding key length in bits when users use only the 26 lowercase letters from the alphabet:&lt;/p&gt;
+
+\[\log_2{26^8}\approx37.6035\approx38\]
+
+&lt;p&gt;(4) a. 7-bit characters:&lt;/p&gt;
+
+\[128^x=2^{128}\\
+(2^7)^x=2^{7x}=2^{128}\\
+x\approx18.3\]
+
+&lt;p&gt;So it at least requires 19 characters.&lt;/p&gt;
+
+&lt;p&gt;(4) b. 26 lowercase letters from the alphabet:&lt;/p&gt;
+
+\[26^x=2^{128}\\
+x=\log_{26}{2^{128}}\\
+x\approx27.2\]
+
+&lt;p&gt;So at least 28 characters are required.&lt;/p&gt;
+
+&lt;h3 id=&quot;15&quot;&gt;1.5&lt;/h3&gt;
+
+&lt;p&gt;(1) $15 \cdot 29 \equiv 2\cdot3 \equiv 6 \bmod 13$&lt;/p&gt;
+
+&lt;p&gt;(2) $2 \cdot 29 \equiv 2 \cdot 3 \equiv 6 \bmod 13$&lt;/p&gt;
+
+&lt;p&gt;(3) $2 \cdot 3 \equiv 6 \bmod 13$&lt;/p&gt;
+
+&lt;p&gt;(4) $-11 \cdot 3 \equiv 2 \cdot 3 \equiv 6 \bmod 13$&lt;/p&gt;
+
+&lt;p&gt;All members in the same equivalence class behave the same.&lt;/p&gt;
+
+&lt;h3 id=&quot;16&quot;&gt;1.6&lt;/h3&gt;
+
+&lt;p&gt;(1) $1/5\bmod13=8$&lt;/p&gt;
+
+&lt;p&gt;(2) $1/5\bmod7=3$&lt;/p&gt;
+
+&lt;p&gt;(3) $3\cdot2/5\bmod7=4$&lt;/p&gt;
+
+&lt;h3 id=&quot;17&quot;&gt;1.7&lt;/h3&gt;
+
+&lt;p&gt;(1) $\mathbb{Z}_4$, multiplication table:&lt;/p&gt;
+
+\[\begin{array}{c|c c c c} 
+\times
+  &amp;amp; 0 &amp;amp; 1 &amp;amp; 2 &amp;amp; 3 \\ 
+\hline 
+0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 \\ 
+1 &amp;amp; 0 &amp;amp; 1 &amp;amp; 2 &amp;amp; 3 \\ 
+2 &amp;amp; 0 &amp;amp; 2 &amp;amp; 0 &amp;amp; 2 \\ 
+3 &amp;amp; 0 &amp;amp; 3 &amp;amp; 2 &amp;amp; 1 \\ 
+\end{array}\]
+
+&lt;p&gt;(2) $\mathbb{Z}_5$, addition and multiplication table:&lt;/p&gt;
+
+\[\begin{array}{c|c c c c c} 
++ &amp;amp; 0 &amp;amp; 1 &amp;amp; 2 &amp;amp; 3 &amp;amp; 4 \\ 
+\hline 
+0 &amp;amp; 0 &amp;amp; 1 &amp;amp; 2 &amp;amp; 3 &amp;amp; 4 \\ 
+1 &amp;amp; 1 &amp;amp; 2 &amp;amp; 3 &amp;amp; 4 &amp;amp; 0 \\ 
+2 &amp;amp; 2 &amp;amp; 3 &amp;amp; 4 &amp;amp; 0 &amp;amp; 1 \\ 
+3 &amp;amp; 3 &amp;amp; 4 &amp;amp; 0 &amp;amp; 1 &amp;amp; 2 \\ 
+4 &amp;amp; 4 &amp;amp; 0 &amp;amp; 1 &amp;amp; 2 &amp;amp; 3 \\ 
+\end{array}
+\ \ 
+\begin{array}{c|c c c c c} 
+\times
+  &amp;amp; 0 &amp;amp; 1 &amp;amp; 2 &amp;amp; 3 &amp;amp; 4 \\ 
+\hline 
+0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 \\ 
+1 &amp;amp; 0 &amp;amp; 1 &amp;amp; 2 &amp;amp; 3 &amp;amp; 4 \\ 
+2 &amp;amp; 0 &amp;amp; 2 &amp;amp; 4 &amp;amp; 1 &amp;amp; 3 \\ 
+3 &amp;amp; 0 &amp;amp; 3 &amp;amp; 1 &amp;amp; 4 &amp;amp; 2 \\ 
+4 &amp;amp; 0 &amp;amp; 4 &amp;amp; 3 &amp;amp; 2 &amp;amp; 1 \\ 
+\end{array}\]
+
+&lt;p&gt;(3) $\mathbb{Z}_6$, addition and multiplication table:&lt;/p&gt;
+
+\[\begin{array}{c|c c c c c c} 
++ &amp;amp; 0 &amp;amp; 1 &amp;amp; 2 &amp;amp; 3 &amp;amp; 4 &amp;amp; 5 \\ 
+\hline 
+0 &amp;amp; 0 &amp;amp; 1 &amp;amp; 2 &amp;amp; 3 &amp;amp; 4 &amp;amp; 5 \\ 
+1 &amp;amp; 1 &amp;amp; 2 &amp;amp; 3 &amp;amp; 4 &amp;amp; 5 &amp;amp; 0 \\ 
+2 &amp;amp; 2 &amp;amp; 3 &amp;amp; 4 &amp;amp; 5 &amp;amp; 0 &amp;amp; 1 \\ 
+3 &amp;amp; 3 &amp;amp; 4 &amp;amp; 5 &amp;amp; 0 &amp;amp; 1 &amp;amp; 2 \\ 
+4 &amp;amp; 3 &amp;amp; 4 &amp;amp; 5 &amp;amp; 0 &amp;amp; 2 &amp;amp; 3 \\ 
+5 &amp;amp; 3 &amp;amp; 4 &amp;amp; 5 &amp;amp; 0 &amp;amp; 3 &amp;amp; 4 \\ 
+\end{array}
+\ \ 
+\begin{array}{c|c c c c c c} 
+\times
+  &amp;amp; 0 &amp;amp; 1 &amp;amp; 2 &amp;amp; 3 &amp;amp; 4 &amp;amp; 5 \\ 
+\hline 
+0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 \\ 
+1 &amp;amp; 0 &amp;amp; 1 &amp;amp; 2 &amp;amp; 3 &amp;amp; 4 &amp;amp; 5 \\ 
+2 &amp;amp; 0 &amp;amp; 2 &amp;amp; 4 &amp;amp; 0 &amp;amp; 2 &amp;amp; 4 \\ 
+3 &amp;amp; 0 &amp;amp; 3 &amp;amp; 0 &amp;amp; 3 &amp;amp; 0 &amp;amp; 3 \\ 
+4 &amp;amp; 0 &amp;amp; 4 &amp;amp; 2 &amp;amp; 0 &amp;amp; 4 &amp;amp; 2 \\ 
+5 &amp;amp; 0 &amp;amp; 5 &amp;amp; 4 &amp;amp; 3 &amp;amp; 2 &amp;amp; 1 \\ 
+\end{array}\]
+
+&lt;p&gt;(4) a. In $\mathbb{Z}_4$, 0 and 2 do not have a multiplicative inverse. In $\mathbb{Z}_6$, 0, 2, 3 and 4 do not have a multiplicative inverse.&lt;/p&gt;
+
+&lt;p&gt;(4) b. 5 is a prime number. All non-zero numbers smaller than 5 are coprime to 5.&lt;/p&gt;
+
+&lt;h3 id=&quot;18&quot;&gt;1.8&lt;/h3&gt;
+
+\[5\times9\equiv1\bmod11\to5^{-1}\equiv9\bmod11\\
+5\times5\equiv1\bmod12\to5^{-1}\equiv5\bmod12\\
+5\times8\equiv1\bmod13\to5^{-1}\equiv8\bmod13\\\]
+
+&lt;h3 id=&quot;19&quot;&gt;1.9&lt;/h3&gt;
+
+&lt;p&gt;(1) $x=3^2\bmod13\equiv9\bmod13$&lt;/p&gt;
+
+&lt;p&gt;(2) $x=7^2 \bmod 13 \equiv 10 \bmod 13$&lt;/p&gt;
+
+&lt;p&gt;(3)&lt;/p&gt;
+
+\[\begin{aligned}
+x&amp;amp;=3^{10}\bmod 13\\
+&amp;amp;=3^9\times3\bmod13\\
+&amp;amp;=27^3\times3\bmod13\\
+&amp;amp; =(13\times2+1)^3\times3\bmod13\\
+&amp;amp;\equiv1^3\times3\bmod13\\
+&amp;amp;\equiv 3 \bmod 13
+\end{aligned}\]
+
+&lt;p&gt;(4)&lt;/p&gt;
+
+\[\begin{aligned}
+x&amp;amp;=7^{100}\bmod13\\
+&amp;amp;=(7^2)^{50}\bmod13\\
+&amp;amp;=(13\times3+10)^{50}\bmod13\\
+&amp;amp;\equiv10^{50}\bmod13\\
+&amp;amp;=100^{25}\bmod13\\
+&amp;amp;=(13\times7+9)^{25}\bmod 13\\
+&amp;amp;\equiv9^{25}\bmod13\\
+&amp;amp;=81^{12}\times9\bmod13\\
+&amp;amp;=(13\times6+3)^{12}\times9\bmod13\\
+&amp;amp;\equiv3^{14}\bmod13\\
+&amp;amp;=(3^4)^3\times3^2\bmod13\\
+&amp;amp;\equiv3^3\times3^2\bmod13\\
+&amp;amp;\equiv3\times3\bmod13\\
+&amp;amp;=9\bmod13
+\end{aligned}\]
+
+&lt;p&gt;(5) Through trial &amp;amp; error:&lt;/p&gt;
+
+\[7^x=11\bmod13\\
+x=5\]
+
+&lt;h3 id=&quot;110&quot;&gt;1.10&lt;/h3&gt;
+
+\[\phi(4)=2,\phi(5)=4,\phi(9)=6,\phi(26)=12\]
+
+&lt;h3 id=&quot;111&quot;&gt;1.11&lt;/h3&gt;
+
+&lt;p&gt;(1) See the solution script:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# enc: f = 7*x+22 mod 26
+# dec: x = (f-22)*inv(7,26) mod 26
+#        = (f-22)*15 mod 26
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'falszztysyjzyjkywjrztyjztyynaryjkyswarztyegyyj'&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;chr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# first the sentence and then the evidence said the queen
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(2) Lewis Carroll wrote it in one of his poems.&lt;/p&gt;
+
+&lt;h3 id=&quot;112&quot;&gt;1.12&lt;/h3&gt;
+
+&lt;p&gt;(1)&lt;/p&gt;
+
+\[e_k(x)=y=a\cdot x+b\bmod30\\
+d_k(y)=x=a^{-1}\cdot(y-b)\bmod 30\\
+\text{Key and Requirements:} \\
+(k=(a,b)\ \&amp;amp;\ gcd(a,30)=1)\]
+
+&lt;p&gt;(2)&lt;/p&gt;
+
+\[\phi(30)\times30=8\times30=240\]
+
+&lt;p&gt;(3) Transform the ciphertext into bias-in-the-alphabet form: &lt;code class=&quot;highlighter-rouge&quot;&gt;(26,20,29,22,29)&lt;/code&gt;&lt;/p&gt;
+
+\[17^{-1}\equiv23\bmod30\to d(y)=(y-1)\times23\bmod30\\
+d(26,20,29,22,29)=(5,17,14,3,14)\]
+
+&lt;p&gt;Transform it back, we get the plaintext: &lt;code class=&quot;highlighter-rouge&quot;&gt;FRODO&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;(4) &lt;a href=&quot;https://en.wikipedia.org/wiki/Frodo_Baggins&quot; target=&quot;_blank&quot;&gt;Frodo&lt;/a&gt; comes from The Shire (Lord Of The Rings character).&lt;/p&gt;
+
+&lt;h3 id=&quot;113&quot;&gt;1.13&lt;/h3&gt;
+
+\[\begin{cases}
+y_1=ax_1+b\\
+y_2=ax_2+b
+\end{cases}
+\Rightarrow 
+\begin{cases}
+b=y_1-ax_1\\
+a=(y_2-y_1)(x_2-x_1)^{-1}
+\end{cases}
+\pmod N
+\\
+\text{(N is the size of the alphabet being encrypted)}\\
+\text{}\\
+\text{We should make sure that: }gcd(x_2-x_1,N)=1\\
+\text{so that }(x_2-x_1)^{-1}\bmod{N} \text{ exists}.\]
+
+&lt;h3 id=&quot;114&quot;&gt;1.14&lt;/h3&gt;
+
+&lt;p&gt;(1)&lt;/p&gt;
+
+\[e_{k2}(e_{k1}(x))=a_2(a_1x+b_1)+b_2=a_1a_2x+a_2b_1+b_2\pmod{26}\\
+\text{let }k_3\equiv(a_1a_2,a_2b_1+b_2)\pmod{26}\\
+\text{then }e_{k3}=e_{k2}(e_{k1}(x))\]
+
+&lt;p&gt;(2)&lt;/p&gt;
+
+\[a_3=a_1a_2\bmod26=33\bmod26\equiv7\bmod26\\
+b_3=a_2b_1+b_2\bmod26=11\times5+7\bmod26\equiv10\bmod26\\
+\Rightarrow(a_3,b_3)\equiv(7,10)\bmod26\]
+
+&lt;p&gt;(3) See the solution script:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;enc_k1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;enc_k2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;enc_k3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;enc_k2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;enc_k1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;enc_k3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Error!'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Verified'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Verified
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(4) Searching all $(k_1\in K,k_2\in K)$ is equivalent to just searching all $k_3\in K$. The keyspace does not increase at all by the specified double encryption.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>N1CTF2020 n1vault, Thoughts &amp; Solutions</title>
+   <link href="https://yype.site/2020/10/23/n1vault"/>
+   <updated>2020-10-23T00:00:00+00:00</updated>
+   <id>https://yype.site/2020/10/23/n1vault</id>
+   <content type="html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+
+&lt;p&gt;I designed the RE challenge &lt;em&gt;n1vault&lt;/em&gt; in the recent CTF &lt;a href=&quot;https://ctftime.org/event/1099&quot; target=&quot;_blank&quot;&gt;N1CTF2020&lt;/a&gt;, in this post I will talk about details about this chal and offer some possible solutions.&lt;/p&gt;
+
+&lt;p&gt;The core part of this challenge is to craft a file’s CRC to an arbitrary value(zero) by modifying some specified bytes of the same bit size as the CRC value.&lt;/p&gt;
+
+&lt;p&gt;As for the binary &lt;code class=&quot;highlighter-rouge&quot;&gt;n1vault&lt;/code&gt;, it uses SHA256 to digest all the bytes inside the file(&lt;code class=&quot;highlighter-rouge&quot;&gt;credencial.png&lt;/code&gt;) except for the even bytes in the last 25 bytes(some twists were added to the &lt;em&gt;sha256_update&lt;/em&gt; function, paving the way for the backdoor), once the file’s CRC has been faked to 0, a secret logic(backdoor) will be triggered by an exception &lt;em&gt;FPE_INTDIV&lt;/em&gt;, since the verification inside function &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt; has an unnecessary comparison &lt;code class=&quot;highlighter-rouge&quot;&gt;4764888639493207598 / (crc32_result | crc64_result) == 1&lt;/code&gt;, which will trigger an &lt;em&gt;FPE_INTDIV&lt;/em&gt; when both crc32_result and crc64_result are zero, and will be evaluated to &lt;em&gt;true&lt;/em&gt; when given the original file &lt;code class=&quot;highlighter-rouge&quot;&gt;credential.png&lt;/code&gt;. Players’ job is to to craft an input to trigger the backdoor, send the crafted bytes to the judging bot and receive the flag.&lt;/p&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;The reverse engineering part of the binary program is quite easy, some junks with fixed patterns are inserted into the main logic, which can be bypassed by simple searching &amp;amp; replacing. After that the program logic is really straightforward, we only have to solve the math problem left.&lt;/p&gt;
+
+&lt;p&gt;CRC has a property that the final result can be viewed as the linear combination of the influence of each bit in the message and an initial bias, based on $GF(2)$, which can be described as:&lt;/p&gt;
+
+\[f(x)=f(0) + \sum_{i=0}^{CRC\_SIZE-1} x_i \cdot influence_i,\]
+
+&lt;p&gt;where $f(0)$ is the initial bias, specifically for this challenge, is the CRC of the credential with all the even bytes in the last 25 bytes set to zero. Given this property, if we have enough $x_i$ to control, we can easily construct a matrix and solve each $x_i$ using gaussian elimination. The twist here is that we have to ensure both $f(x)=CRC32(credential)$ and $g(x)=CRC64(credential)$ are equal to zero. Actually if we let $h(x)=(f(x) &amp;lt; &amp;lt; 64)+g(x)$ and focus our attention on making $h(x)=0$, it has the same effect as making both $f(x)$ and $g(x)$ zero.&lt;/p&gt;
+
+&lt;p&gt;I write a tool based on this interesting property of CRC, allowing us to arbitrarily craft a file’s CRC by specifying certain bits available for modification. It can output all the available solutions and allows for fewer available bits than the bit size of the CRC result. You can check the tool here:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://github.com/yype/crcollider&quot; target=&quot;_blank&quot;&gt;https://github.com/yype/crcollider&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Using this tool we can easily solve the problem using the following Python code:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;crcollider&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;collcrc&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;crc_funcs&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;crc64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;crc32&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;crc96&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;crc32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;crc64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solve_chal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'credential.png'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'rb'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;org_img&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;rg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;org_img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;available_bits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# even bytes in the last 25 bytes
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;available_bits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;sol_num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sols&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;collcrc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;crc96&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;96&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;org_img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;available_bits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'{sol_num} solution(s) found'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;file_out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'credential_sol{i}.png'&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Outputting sol{i} to {file_out}...'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file_out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'wb'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'__main__'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;solve_chal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;There are totally 4 solutions available for this challenge. One of them contains only visible characters, which is &lt;code class=&quot;highlighter-rouge&quot;&gt;n1vaultadmin&lt;/code&gt;(intentionally crafted), while others are not. It might be better if I put some constraints to ensure that only one solution is available though.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;solution&amp;gt; python3 .\main.py
+4 solution(s) found
+Outputting sol0 to credential_sol0.png...
+Outputting sol1 to credential_sol1.png...
+Outputting sol2 to credential_sol2.png...
+Outputting sol3 to credential_sol3.png...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can also check the awesome write-up from team &lt;em&gt;Super Guesser&lt;/em&gt; who got the first blood of this challenge here: &lt;a href=&quot;https://gist.github.com/jhs7jhs/cb5fedc1ffb6138b73420cb8567357bb#n1vault&quot; target=&quot;_blank&quot;&gt;https://gist.github.com/jhs7jhs/cb5fedc1ffb6138b73420cb8567357bb#n1vault&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The source code of this challenge and a duplicate of this post are uploaded to GitHub, check them out at: &lt;a href=&quot;https://github.com/Nu1LCTF/n1ctf-2020/tree/main/RE/n1vault&quot; target=&quot;_blank&quot;&gt;https://github.com/Nu1LCTF/n1ctf-2020/tree/main/RE/n1vault&lt;/a&gt;.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>PlaidCTF2020 The Watness 2 Write-up</title>
+   <link href="https://yype.site/2020/04/20/hypercard-over-windows"/>
+   <updated>2020-04-20T00:00:00+00:00</updated>
+   <id>https://yype.site/2020/04/20/Hypercard-Over-Windows</id>
+   <content type="html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+
+&lt;p&gt;Recently in PlaidCTF2020 there was a RE challenge called &lt;em&gt;The Watness 2&lt;/em&gt;, which is a game that requires the application &lt;em&gt;HyperCard&lt;/em&gt; to run. Since I did not have a Macbook computer, I’d been struggling figuring out ways to run this game over my Windows 10 laptop. Here is how I finally managed to do that.&lt;/p&gt;
+
+&lt;h2 id=&quot;steps&quot;&gt;Steps&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Follow &lt;a href=&quot;https://www.youtube.com/watch?v=TY3pjSGg1y4&quot;&gt;this great video tutorial&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Download &lt;a href=&quot;https://www.macintoshrepository.org/2475-stuffit-expander-and-dropstuff-5-5&quot;&gt;StuffitExpander&lt;/a&gt;, add it to the volumes’ list, install it inside the VM:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/HypercardOverWindows/1587369699146.png&quot; alt=&quot;1587369699146&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Download &lt;a href=&quot;https://macintoshgarden.org/apps/hypercard-241&quot;&gt;HyperCard 2.4&lt;/a&gt;, install it inside the VM as described above&lt;/li&gt;
+  &lt;li&gt;Extract the .rc1 file from the .sit file and open it with a simple double-click:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/HypercardOverWindows/1587369949569.png&quot; alt=&quot;1587369949569&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;challenge-solution&quot;&gt;Challenge Solution&lt;/h3&gt;
+
+&lt;p&gt;Extract the stack’s script code:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/HypercardOverWindows/1587389434804.png&quot; alt=&quot;1587389434804&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;on openCard
+  Send colorMe to this card
+  pass openCard
+end openCard
+
+on closeCard
+  global prev_card
+  get the id of this cd
+  put it into prev_card
+  lock screen
+  pass closeCard
+end closeCard
+
+on colorMe
+  AddColor colorCard,stamp,0
+end colorMe
+
+on openStack
+  AddColor install
+  setupMenu
+  go to card &quot;tun-1-n&quot;
+  pass openStack
+end openStack
+
+on closeStack
+  AddColor remove
+  pass closeStack
+end closeStack
+
+on genPuzzle
+  send &quot;doMenu New Button&quot; to Hypercard
+end genPuzzle
+
+on initCard
+  answer prev_card
+end initCard
+
+on menuReset
+  setupMenu
+  pass menuReset
+end menuReset
+
+
+on setupMenu
+  if there is not a menu &quot;Watness&quot; then
+    create menu &quot;Watness&quot;
+    put &quot;Generate Puzzle&quot;&amp;amp;return&amp;amp;&quot;Init Card&quot;&amp;amp;return&amp;amp;&quot;Set up Nav&quot;&amp;amp;return&amp;amp;&quot;Create Puzzle&quot; into menu &quot;Watness&quot; with menuMsg genPuzzle,initCard,setupNav,constructPuzzle
+  end if
+end setupMenu
+
+
+on setupNav
+  ask &quot;What is the name of this card&quot;
+  set name of this cd to it
+  
+  ask &quot;Where should the left go?&quot;
+  put it into left_loc
+  send &quot;doMenu New Button&quot; to Hypercard
+  set height of the last button to 342
+  set width of the last button to 100
+  set topleft of the last button to &quot;0,0&quot;
+  set style of the last button to &quot;transparent&quot;
+  set name of the last button to &quot;&quot;
+  put &quot;on mouseUp&quot;&amp;amp;return&amp;amp;&quot;go to card &quot;&amp;amp;quote&amp;amp;&quot;&quot;&amp;amp;left_loc&amp;amp;quote&amp;amp;return&amp;amp;&quot;end mouseUp&quot; into left_script
+  set script of last button to left_script
+  
+  ask &quot;Where should the right go?&quot;
+  put it into right_loc
+  send &quot;doMenu New Button&quot; to Hypercard
+  set height of the last button to 342
+  set width of the last button to 100
+  set topleft of the last button to &quot;412,0&quot;
+  set style of the last button to &quot;transparent&quot;
+  set name of the last button to &quot;&quot;
+  put &quot;on mouseUp&quot;&amp;amp;return&amp;amp;&quot;go to card &quot;&amp;amp;quote&amp;amp;&quot;&quot;&amp;amp;right_loc&amp;amp;quote&amp;amp;return&amp;amp;&quot;end mouseUp&quot; into right_script
+  set script of last button to right_script
+  
+  ask &quot;Where should fwd go?&quot;
+  put it into fwd_loc
+  send &quot;doMenu New Button&quot; to Hypercard
+  set height of the last button to 342
+  set width of the last button to 311
+  set the top of the last button to 0
+  set the left of the last button to 100
+  set style of the last button to &quot;transparent&quot;
+  set name of the last button to &quot;&quot;
+  put &quot;on mouseUp&quot;&amp;amp;return&amp;amp;&quot;go to card &quot;&amp;amp;quote&amp;amp;&quot;&quot;&amp;amp;fwd_loc&amp;amp;quote&amp;amp;return&amp;amp;&quot;end mouseUp&quot; into fwd_script
+  set script of last button to fwd_script
+  
+  get the script of this card
+  put it into cd_script
+  put cd_script&amp;amp;return into cd_script
+  put cd_script&amp;amp;&quot;on arrowKey key&quot;&amp;amp;return into cd_script
+  put cd_script&amp;amp;&quot; if key = &quot;&amp;amp;quote&amp;amp;&quot;left&quot;&amp;amp;quote&amp;amp;&quot;then&quot;&amp;amp;return into cd_script
+  put cd_script&amp;amp;&quot;  go to cd &quot;&amp;amp;quote&amp;amp;left_loc&amp;amp;quote&amp;amp;return into cd_script
+  put cd_script&amp;amp;&quot; end if&quot;&amp;amp;return into cd_script
+  put cd_script&amp;amp;&quot; if key = &quot;&amp;amp;quote&amp;amp;&quot;right&quot;&amp;amp;quote&amp;amp;&quot;then&quot;&amp;amp;return into cd_script
+  put cd_script&amp;amp;&quot;  go to cd &quot;&amp;amp;quote&amp;amp;right_loc&amp;amp;quote&amp;amp;return into cd_script
+  put cd_script&amp;amp;&quot; end if&quot;&amp;amp;return into cd_script
+  put cd_script&amp;amp;&quot; if key = &quot;&amp;amp;quote&amp;amp;&quot;up&quot;&amp;amp;quote&amp;amp;&quot;then&quot;&amp;amp;return into cd_script
+  put cd_script&amp;amp;&quot;  go to cd &quot;&amp;amp;quote&amp;amp;fwd_loc&amp;amp;quote&amp;amp;return into cd_script
+  put cd_script&amp;amp;&quot; end if&quot;&amp;amp;return into cd_script
+  put cd_script&amp;amp;&quot;end arrowKey&quot;&amp;amp;return into cd_script
+  
+  
+  set the script of this cd to cd_script
+end setupNav
+
+
+on makeNode
+  global node
+  send &quot;doMenu New Button&quot; to Hypercard
+  put the id of the last button into node
+end makeNode
+
+
+on constructPuzzle
+  global node,constraints
+  
+  ask &quot;What are the constraints&quot;
+  put it into constraints
+  
+  get the script of this cd
+  put it into cd_script
+  put cd_script&amp;amp;return into cd_script
+  put cd_script&amp;amp;&quot;on openCard&quot;&amp;amp;return into cd_script
+  put cd_script&amp;amp;&quot;  global constraints,path,cursor_x,cursor_y,&quot; into cd_script
+  
+  put 0 into i
+  repeat for 8
+    
+    put 0 into j
+    repeat for 8
+      put cd_script&amp;amp;&quot;active_&quot;&amp;amp;i&amp;amp;&quot;_&quot;&amp;amp;j&amp;amp;&quot;,&quot; into cd_script
+      
+      put j+1 into j
+    end repeat
+    
+    put i+1 into i
+  end repeat
+  
+  put cd_script&amp;amp;&quot;dummy&quot;&amp;amp;return into cd_script
+  put cd_script&amp;amp;&quot;  colorme&quot;&amp;amp;return into cd_script
+  put cd_script&amp;amp;&quot;  put -1 into cursor_x&quot;&amp;amp;return into cd_script
+  put cd_script&amp;amp;&quot;  put 0 into cursor_y&quot;&amp;amp;return into cd_script
+  put cd_script&amp;amp;&quot;  put &quot;&amp;amp;quote&amp;amp;quote&amp;amp;&quot; into path&quot;&amp;amp;return into cd_script
+  put cd_script&amp;amp;&quot;  put &quot;&amp;amp;quote&amp;amp;constraints&amp;amp;quote&amp;amp;&quot; into constraints&quot;&amp;amp;return into cd_script
+  
+  put 1 into c_i
+  put 0 into i
+  repeat for 7
+    
+    put 0 into j
+    repeat for 7
+      get char (j*7+i+1) of constraints
+      put it into letter
+      
+      if letter &amp;lt;&amp;gt; &quot; &quot; then
+        makeNode
+        
+        set the width of button id node to 10
+        set the height of button id node to 10
+        
+        set the top of button id node to (76 + j * 30)
+        set the left of button id node to (161 + i * 30)
+        
+        set the style of button id node to &quot;opaque&quot;
+        set showName of button id node to false
+        
+        if letter = &quot;r&quot; then
+          put &quot;65535,0,0&quot; into node_color
+        end if
+        if letter = &quot;g&quot; then
+          put &quot;0,65535,0&quot; into node_color
+        end if
+        if letter = &quot;b&quot; then
+          put &quot;0,0,65535&quot; into node_color
+        end if
+        
+        if letter &amp;lt;&amp;gt; &quot; &quot; then
+          addColor colorButton, cd, node, node_color
+          
+          put cd_script&amp;amp;&quot;  addColor colorButton, cd, &quot;&amp;amp;node&amp;amp;&quot;, &quot;&amp;amp;quote&amp;amp;node_color&amp;amp;quote&amp;amp;return into cd_script
+        end if
+      end if
+      
+      
+      
+      put j+1 into j
+    end repeat
+    
+    put i+1 into i
+  end repeat
+  
+  
+  
+  put 0 into i
+  repeat for 8
+    
+    put 0 into j
+    repeat for 8
+      put cd_script&amp;amp;&quot;  put &quot;&amp;amp;quote&amp;amp;quote&amp;amp;&quot; into active_&quot;&amp;amp;i&amp;amp;&quot;_&quot;&amp;amp;j&amp;amp;return into cd_script
+      
+      put j+1 into j
+    end repeat
+    
+    put i+1 into i
+  end repeat
+  
+  makeNode
+  
+  set the width of button id node to 10
+  set the height of button id node to 15
+  set the left of button id node to 356
+  set the top of button id node to 276
+  set the name of button id node to &quot;path_extension&quot;
+  set showName of button id node to false
+  set the style of button id node to opaque
+  addcolor colorButton, cd, node, &quot;37632,30208,12288&quot;
+  
+  put &quot;&quot; into node_script
+  put node_script&amp;amp;&quot;on checkYoSelf&quot;&amp;amp;return into node_script
+  put node_script&amp;amp;&quot;  addcolor colorButton, cd, &quot;&amp;amp;node&amp;amp;&quot;, &quot;&amp;amp;quote&amp;amp;&quot;65535,65535,30000&quot;&amp;amp;quote&amp;amp;return into node_script
+  put node_script&amp;amp;&quot;end checkYoSelf&quot;&amp;amp;return into node_script
+  
+  set the script of button id node to node_script
+  
+  put cd_script&amp;amp;&quot;  addcolor colorButton, cd, &quot;&amp;amp;node&amp;amp;&quot;, &quot;&amp;amp;quote&amp;amp;&quot;37632,30208,12288&quot;&amp;amp;quote&amp;amp;return into cd_script
+  
+  
+  makeNode
+  
+  set the width of button id node to 10
+  set the height of button id node to 10
+  set the left of button id node to 356
+  set the top of button id node to 286
+  set the name of button id node to &quot;finale&quot;
+  set showName of button id node to false
+  set the style of button id node to oval
+  addcolor colorButton, cd, node, &quot;37632,30208,12288&quot;
+  
+  put &quot;&quot; into node_script
+  put node_script&amp;amp;&quot;on mouseUp&quot;&amp;amp;return into node_script
+  put node_script&amp;amp;&quot;  global cursor_x, cursor_y&quot;&amp;amp;return into node_script
+  put node_script&amp;amp;&quot;  if (cursor_x = 7) and (cursor_y = 7) then&quot;&amp;amp;return into node_script
+  put node_script&amp;amp;&quot;    addcolor colorButton, cd, &quot;&amp;amp;node&amp;amp;&quot;, &quot;&amp;amp;quote&amp;amp;&quot;65535,65535,30000&quot;&amp;amp;quote&amp;amp;return into node_script
+  put node_script&amp;amp;&quot;    send &quot;&amp;amp;quote&amp;amp;&quot;checkYoSelf&quot;&amp;amp;quote&amp;amp;&quot; to button path_extension&quot;&amp;amp;return into node_script
+  put node_script&amp;amp;&quot;    send &quot;&amp;amp;quote&amp;amp;&quot;checkSolution&quot;&amp;amp;quote&amp;amp;&quot; to this cd&quot;&amp;amp;return into node_script
+  put node_script&amp;amp;&quot;  end if&quot;&amp;amp;return into node_script
+  put node_script&amp;amp;&quot;end mouseUp&quot;&amp;amp;return into node_script
+  
+  set the script of button id node to node_script
+  
+  put cd_script&amp;amp;&quot;  addcolor colorButton, cd, &quot;&amp;amp;node&amp;amp;&quot;, &quot;&amp;amp;quote&amp;amp;&quot;37632,30208,12288&quot;&amp;amp;quote&amp;amp;return into cd_script
+  
+  put 0 into i
+  repeat for 7
+    
+    put 0 into j
+    repeat for 8
+      makeNode
+      
+      set the width of button id node to 30
+      set the height of button id node to 10
+      
+      set the top of button id node to (61 + 30 * j)
+      set the left of button id node to (151 + 30 * i)
+      
+      set the style of button id node to opaque
+      set the name of button id node to &quot;h_path_&quot;&amp;amp;i&amp;amp;&quot;_&quot;&amp;amp;j
+      
+      set showName of button id node to false
+      
+      addcolor colorButton, cd, node, &quot;37632,30208,12288&quot;
+      
+      put cd_script&amp;amp;&quot;  addcolor colorButton, cd, &quot;&amp;amp;node&amp;amp;&quot;, &quot;&amp;amp;quote&amp;amp;&quot;37632,30208,12288&quot;&amp;amp;quote&amp;amp;return into cd_script
+      
+      get the script of button id node
+      put it into node_script
+      
+      put &quot;active_&quot;&amp;amp;i&amp;amp;&quot;_&quot;&amp;amp;j into f_node
+      put &quot;active_&quot;&amp;amp;(i+1)&amp;amp;&quot;_&quot;&amp;amp;j into s_node
+      
+      put node_script&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;on checkYoSelf&quot;&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;  global &quot;&amp;amp;f_node&amp;amp;&quot;,&quot;&amp;amp;s_node&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;  if (&quot;&amp;amp;f_node&amp;amp;&quot; = true) and (&quot;&amp;amp;s_node&amp;amp;&quot; = true) then&quot;&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;    addcolor colorButton, cd, &quot;&amp;amp;node&amp;amp;&quot;, &quot;&amp;amp;quote&amp;amp;&quot;65535,65535,30000&quot;&amp;amp;quote&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;  end if&quot;&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;end checkYoSelf&quot;&amp;amp;return into node_script
+      
+      set the script of button id node to node_script
+      
+      put j+1 into j
+    end repeat
+    
+    put i+1 into i
+  end repeat
+  
+  put 0 into i
+  repeat for 8
+    
+    put 0 into j
+    repeat for 7
+      makeNode
+      
+      set the width of button id node to 10
+      set the height of button id node to 30
+      
+      set the top of button id node to (66 + 30 * j)
+      set the left of button id node to (146 + 30 * i)
+      
+      set the style of button id node to opaque
+      set the name of button id node to &quot;v_path_&quot;&amp;amp;i&amp;amp;&quot;_&quot;&amp;amp;j
+      
+      set showName of button id node to false
+      
+      addcolor colorButton, cd, node, &quot;37632,30208,12288&quot;
+      
+      put cd_script&amp;amp;&quot;  addcolor colorButton, cd, &quot;&amp;amp;node&amp;amp;&quot;, &quot;&amp;amp;quote&amp;amp;&quot;37632,30208,12288&quot;&amp;amp;quote&amp;amp;return into cd_script
+      
+      get the script of button id node
+      put it into node_script
+      
+      put &quot;active_&quot;&amp;amp;i&amp;amp;&quot;_&quot;&amp;amp;j into f_node
+      put &quot;active_&quot;&amp;amp;i&amp;amp;&quot;_&quot;&amp;amp;(j+1) into s_node
+      
+      put node_script&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;on checkYoSelf&quot;&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;  global &quot;&amp;amp;f_node&amp;amp;&quot;,&quot;&amp;amp;s_node&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;  if (&quot;&amp;amp;f_node&amp;amp;&quot; = true) and (&quot;&amp;amp;s_node&amp;amp;&quot; = true) then&quot;&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;    addcolor colorButton, cd, &quot;&amp;amp;node&amp;amp;&quot;, &quot;&amp;amp;quote&amp;amp;&quot;65535,65535,30000&quot;&amp;amp;quote&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;  end if&quot;&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;end checkYoSelf&quot;&amp;amp;return into node_script
+      
+      set the script of button id node to node_script
+      
+      put j+1 into j
+    end repeat
+    
+    put i+1 into i
+  end repeat
+  
+  put 0 into i
+  repeat for 8
+    
+    put 0 into j
+    repeat for 8
+      makeNode
+      
+      set the width of button id node to 10
+      set the height of button id node to 10
+      
+      set the top of button id node to (61 + 30 * j)
+      set the left of button id node to (146 + 30 * i)
+      
+      set the style of button id node to oval
+      set the name of button id node to &quot;button_&quot;&amp;amp;i&amp;amp;&quot;_&quot;&amp;amp;j
+      
+      set showName of button id node to false
+      
+      addcolor colorButton, cd, node, &quot;37632,30208,12288&quot;
+      
+      put &quot;active_&quot;&amp;amp;i&amp;amp;&quot;_&quot;&amp;amp;j into v_name
+      
+      put &quot;&quot; into node_script
+      put node_script&amp;amp;&quot;on mouseUp&quot;&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;  global &quot;&amp;amp;v_name&amp;amp;&quot;,cursor_x,cursor_y&quot;&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;  put cursor_x into prev_x&quot;&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;  put cursor_y into prev_y&quot;&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;  put abs(cursor_x-&quot;&amp;amp;i&amp;amp;&quot;) into dx&quot;&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;  put abs(cursor_y-&quot;&amp;amp;j&amp;amp;&quot;) into dy&quot;&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;  if (&quot;&amp;amp;v_name&amp;amp;&quot; = &quot;&amp;amp;quote&amp;amp;quote&amp;amp;&quot;) and ((dx = 1 and dy = 0) or (dx = 0 and dy = 1)) then&quot;&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;    put true into &quot;&amp;amp;v_name&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;    send &quot;&amp;amp;quote&amp;amp;&quot;updateState &quot;&amp;amp;i&amp;amp;&quot;,&quot;&amp;amp;j&amp;amp;quote&amp;amp;&quot; to this cd&quot;&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;    addcolor colorButton, cd, &quot;&amp;amp;node&amp;amp;&quot;, &quot;&amp;amp;quote&amp;amp;&quot;65535,65535,30000&quot;&amp;amp;quote&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;  end if&quot;&amp;amp;return into node_script
+      put node_script&amp;amp;&quot;end mouseUp&quot;&amp;amp;return into node_script
+      
+      set the script of button id node to node_script
+      
+      put cd_script&amp;amp;&quot;  addcolor colorButton, cd, &quot;&amp;amp;node&amp;amp;&quot;, &quot;&amp;amp;quote&amp;amp;&quot;37632,30208,12288&quot;&amp;amp;quote&amp;amp;return into cd_script
+      
+      put j+1 into j
+    end repeat
+    
+    put i+1 into i
+  end repeat
+  
+  set the width of button button_0_0 to 30
+  set the height of button button_0_0 to 30
+  
+  set the top of button button_0_0 to 51
+  set the left of button button_0_0 to 136
+  
+  get the id of button button_0_0
+  addColor colorButton, cd, it, &quot;37632,30208,12288&quot;
+  
+  put cd_script&amp;amp;&quot;end openCard&quot;&amp;amp;return into cd_script
+  set the script of this cd to cd_script
+  
+end constructPuzzle
+
+on checkSolution
+  global puzzle_id,path,constraints,flag_1,flag_2,flag_3
+  watnesssolver constraints,path
+  put the result into success
+  if success = &quot;true&quot; then
+    if puzzle_id = 1 then
+      decoder path,&quot;clrtffxpry&quot;
+      put the result into flag_1
+    end if
+    if puzzle_id = 2 then
+      decoder path,&quot;nyghq7xksg&quot;
+      put the result into flag_2
+    end if
+    if puzzle_id = 3 then
+      decoder path,&quot;ppyyvn}1{7&quot;
+      put the result into flag_3
+    end if
+  else
+    send opencard to this cd
+  end if
+end checkSolution
+
+
+on updateState i,j
+  global path,cursor_x,cursor_y
+  
+  if (i &amp;lt;&amp;gt; 0) or (j &amp;lt;&amp;gt; 0) then
+    if (cursor_y = j+1) and (cursor_x = i) then
+      put path&amp;amp;&quot;U&quot; into path
+    end if
+    if (cursor_y = j) and (cursor_x = i - 1) then
+      put path&amp;amp;&quot;R&quot; into path
+    end if
+    if (cursor_y = j-1) and (cursor_x = i) then
+      put path&amp;amp;&quot;D&quot; into path
+    end if
+    if (cursor_y = j) and (cursor_x = i + 1) then
+      put path&amp;amp;&quot;L&quot; into path
+    end if
+  end if
+  
+  
+  if cursor_x &amp;gt;= 0 and cursor_y &amp;gt;= 0 then
+    put &quot;h_path_&quot;&amp;amp;min(cursor_x, i)&amp;amp;&quot;_&quot;&amp;amp;min(cursor_y, j) into h_path
+    put &quot;v_path_&quot;&amp;amp;min(cursor_x, i)&amp;amp;&quot;_&quot;&amp;amp;min(cursor_y, j) into v_path
+    
+    if i = cursor_x then
+      send checkYoSelf to button v_path
+    end if
+    
+    if j = cursor_y then
+      send checkYoSelf to button h_path
+    end if
+    
+  end if
+  
+  put i into cursor_x
+  put j into cursor_y
+end updateState
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The card’s script code can also be extracted (puzzle 1):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+on openCard
+  global puzzle_id,constraints,path,cursor_x,cursor_y,active_0_0,active_0_1,active_0_2,active_0_3,active_0_4,active_0_5,active_0_6,active_0_7,active_1_0,active_1_1,active_1_2,active_1_3,active_1_4,active_1_5,active_1_6,active_1_7,active_2_0,active_2_1,active_2_2,active_2_3,active_2_4,active_2_5,active_2_6,active_2_7,active_3_0,active_3_1,active_3_2,active_3_3,active_3_4,active_3_5,active_3_6,active_3_7,active_4_0,active_4_1,active_4_2,active_4_3,active_4_4,active_4_5,active_4_6,active_4_7,active_5_0,active_5_1,active_5_2,active_5_3,active_5_4,active_5_5,active_5_6,active_5_7,active_6_0,active_6_1,active_6_2,active_6_3,active_6_4,active_6_5,active_6_6,active_6_7,active_7_0,active_7_1,active_7_2,active_7_3,active_7_4,active_7_5,active_7_6,active_7_7,dummy
+  colorme
+  put 1 into puzzle_id
+  put -1 into cursor_x
+  put 0 into cursor_y
+  put &quot;&quot; into path
+  put &quot;rbrr rgb rb  r brgrbrgb  grrgbbg grg bgrg  bbgrbg&quot; into constraints
+  addColor colorButton, cd, 1, &quot;65535,0,0&quot;
+  ...
+end openCard
+
+on arrowKey key
+  if key = &quot;left&quot;then
+    go to cd &quot;entry-3-n&quot;
+  end if
+  if key = &quot;right&quot;then
+    go to cd &quot;entry-3-n&quot;
+  end if
+  if key = &quot;up&quot;then
+    go to cd &quot;&quot;
+  end if
+end arrowKey
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now we get the constraint string of this puzzle &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;rbrr rgb rb  r brgrbrgb  grrgbbg grg bgrg  bbgrbg&quot;&lt;/code&gt;, these constraints, along with the path that goes to the lower right corner, are passed into one thing called &lt;em&gt;XCMD&lt;/em&gt; which checks the path’s correctness natively (it contains binary instructions that directly run over the 68k CPU). There are 2 XCMD binaries which can be extracted by &lt;a href=&quot;https://github.com/PierreLorenzi/HyperCardPreview&quot;&gt;this tool&lt;/a&gt;, which seem can only run under MacOS. So I’m using the extracted binary from &lt;a href=&quot;https://ctf.harrisongreen.me/2020/plaidctf/the_watness_2/&quot;&gt;this&lt;/a&gt; great post for now instead.&lt;/p&gt;
+
+&lt;p&gt;What’s more, I found that I can set breakpoints in the script and debug the game, I could even watch the variables on the fly:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/HypercardOverWindows/1588514193878.png&quot; alt=&quot;1588514193878&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As for the XCMD part, it’s basically just a few hours’ reverse engineering work. Since there are currently no reliable decompilers for the 68k architecture, I have to read the assembly. It wasn’t too hard, but I did spend several hours learning the basic concepts of 68k’s instruction set.&lt;/p&gt;
+
+&lt;p&gt;After the reverse engineering work, the watnesssolver’s checking methods can be rewritten in Python as:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;build_automaton&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;trans&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;maketrans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;' rgb'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'0123'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;translate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;trans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;choose_empty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;choose_red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;choose_green&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;choose_blue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;is_red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_neighbors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bias_y&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bias_x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bias_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bias_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bias_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; \
+                    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bias_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bias_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;step_automaton&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;new_constraints&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; \
+                &lt;span class=&quot;n&quot;&gt;get_neighbors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; \
+                &lt;span class=&quot;n&quot;&gt;get_neighbors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; \
+                &lt;span class=&quot;n&quot;&gt;get_neighbors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;new_constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;choose_empty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;new_constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;choose_red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;new_constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;choose_green&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;new_constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;choose_blue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_constraints&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;perform_move&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;bias_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bias_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'U'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;bias_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bias_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'D'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;bias_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bias_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'L'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;bias_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bias_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'R'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;bias_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bias_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;min_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;min_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bias_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;min_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is_red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;min_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;min_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is_red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;min_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;mem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_y&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;build_automaton&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;mem&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# been to or not
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;mem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;yes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;perform_move&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;yes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;c1&quot;&gt;# print(f'Path `{path}` is great ' + '!' * 20)
+&lt;/span&gt;                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_y&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;step_automaton&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;#print(f'Path `{path}` is bad')
+&lt;/span&gt;            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Looking around in the game, we’ll know that there are 3 puzzles we need to solve. So we can simply run 3 DFS searches on these contraints and three unique solutions will be printed out.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;dfs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;depth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;depth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# figured out after multiple tests
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;mov&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;solver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Path {path} is ok'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mov&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'LRUD'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;n_path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;dfs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;depth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;constraints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'__main__'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;constraints_stage1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'rbrr rgb rb  r brgrbrgb  grrgbbg grg bgrg  bbgrbg'&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;constraints_stage2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'rbr  bbggrgrggb   bggbb b  b bbrbbgg gbrrbgrbbb g'&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;constraints_stage3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'rrbrb rg g  bgrbgggr ggrgr gr rg brr  b  bggrbgbb'&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Stage1 solution:'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dfs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;constraints_stage1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Stage2 solution:'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dfs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;constraints_stage2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Stage3 solution:'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dfs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;constraints_stage3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Stage1 solution:
+Path RDDDRURRRDLLDLDRRURRDDDR is ok
+Stage2 solution:
+Path RDDRURDDDRURULURRDDDDDRD is ok
+Stage3 solution:
+Path DRDDDDRUURRRULURRDDDDDDR is ok
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Input these solutions to each puzzle, after that, we could go to the lock-like thing on the white gate to reveal the flag:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/HypercardOverWindows/1588514105474.png&quot; alt=&quot;1588514105474&quot; /&gt;&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Write Invalid and Cache Coherence</title>
+   <link href="https://yype.site/2020/03/12/write-invalid-and-cache-coherence"/>
+   <updated>2020-03-12T00:00:00+00:00</updated>
+   <id>https://yype.site/2020/03/12/write-invalid-and-cache-coherence</id>
+   <content type="html">&lt;p&gt;// This post was written in Chinese&lt;/p&gt;
+
+&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+
+&lt;p&gt;今天分布式听飘了，个人感觉老师放的课件对问题的描述以及解答有些欠缺，后来做了些资料检索，对下面这个简单问题做了些总结：&lt;/p&gt;
+
+&lt;p&gt;对于 write-update、write-invalidate 两种 coherence protocol，哪一种在生产消费者模型下的性能更差？&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;首先得知道 coherence protocol 的目的是什么，它的目的很简单：保证多处理器系统下的数据一致性。&lt;/p&gt;
+
+&lt;p&gt;有两类这种协议，一种是 snoopy-based 另一种是 directory-based（当然还有一个 shared caches 概念这里也不讨论了），对于前者来说，所有读写、更新操作都以类似广播的方式发给所有处理器，每个处理器相应地 snoop and respond，write-update 和 write-invalid 都是属于这一类，这两种方式的定义分别如下：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Write-update: When a write operation is observed to a location that a cache has a copy of, the cache controller updates its own copy of the snooped memory location with the new data.&lt;/li&gt;
+  &lt;li&gt;Write-invalidate: When a write operation is observed to a location that a cache has a copy of, the cache controller invalidates its own copy of the snooped memory location, which forces a read from main memory of the new value on its next access.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Write-invalidate 在一些情况下的优势是很明显的，例如突发大量对单个单元写请求的情况下，它比 write-update 有更好的效果，其每次对内存单元的更新不会引起其他 cache 的更新，因为这个时候其他单元不一定总有 read 请求，write 之后只会对这个内存对应的 cache（其 copy）做一个 invalid 标记，并且在做标记之前如果发现已经是 invalid 状态就不用更新了，因此在没有 read 的情况下只需要发送一次 invalidation 广播，下次其他单元需要访问相应内存时检测到自己 cache 上的 invalid 标记就直接去主存里取数据并更新自己的 cache。&lt;/p&gt;
+
+&lt;p&gt;此外还有一种情况，例如 writes to different words of a block，write-update 在每一个 word 写操作都会发送一次更新请求，而 write-invalidate 由于同理也只会发送一次 invalidation 广播。&lt;/p&gt;
+
+&lt;p&gt;但是对于 producer-consumer 模型而言，producer 的每次更新都要等待一个 consumer 来消费，这就是与之前两种情况不同的一点。这种情况下如果每次还是采用广播 invalidate 消息的方法，下一次某个 consumer 消费的时候检测到自己 cache invalid 状态后便还需要去访问主存，这是完全多余的了，因为我们完全可以在生成好之后直接更新 consumer 的 cache，这样只需要一次写会主存的操作而不是两次。因此这时 write-update 优于 write-invalidate。&lt;/p&gt;
+
+&lt;p&gt;总结一下，对于大量连续的写请求来说，write-invalidate 更好，对于 producer-consumer 这种供需平衡的模型来说 write-update 更优。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;关于 cache coherency 这方面还有许多复杂并且值得探讨的问题，但由于它们太过学术我没有去深究。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;https://www3.nd.edu/~mniemier/teaching/2010_B_Fall/lectures/lec_27_slides.pdf.&lt;/li&gt;
+  &lt;li&gt;https://www.cs.utah.edu/~retrac/papers/hpca07.pdf.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>D^3CTF2019 Ancient Game V2, Thoughts &amp; Solutions</title>
+   <link href="https://yype.site/2020/02/20/ancient-game-v2"/>
+   <updated>2020-02-20T00:00:00+00:00</updated>
+   <id>https://yype.site/2020/02/20/Ancient-Game-V2</id>
+   <content type="html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+
+&lt;p&gt;I designed the RE challenge &lt;em&gt;Ancient Game V2&lt;/em&gt; in D^3CTF2019. This post is about some related stuff along with the chal’s solution.&lt;/p&gt;
+
+&lt;h2 id=&quot;challenge&quot;&gt;Challenge&lt;/h2&gt;
+
+&lt;p&gt;This challenge uses a virtual architecture similar to OISC to implement a classic Sudoku verification. There are basically just 4 types of instructions: input, output, jcc and NAND, which can also be seen as an OISC with two I/O interrupts introduced. All logical operations are implemented through NAND gates.&lt;/p&gt;
+
+&lt;p&gt;Operations like XOR / AND / OR are all implemented by combinations of NAND gates, for example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xor x,y =&amp;gt;
+xor_tmp[0] = y NAND y
+xor_tmp[1] = x NAND xor_tmp[0]
+xor_tmp[2] = x NAND x
+xor_tmp[3] = y NAND xor_tmp[2]
+x = xor_tmp[1] NAND xor_tmp[3]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Which is based on the fact that:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Q = A XOR B = [ B NAND ( A NAND A ) ] NAND [ A NAND ( B NAND B ) ]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;An excerpt of the Sudoku Verifier code in my &lt;em&gt;self-defined assembly&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;welcome = mkstr(&quot;**************************\n**  Welcome To D^3CTF   **\n**   Ancient Game V2    **\n**************************\n\nInput Flag:&quot;)
+wrong = mkstr(&quot;\nSorry, please try again.\n&quot;)
+correct = mkstr(&quot;\nCorrect.\n&quot;)
+
+flag = new(50)
+// distract = new(1000)
+grid = new(81)
+
+
+// initialize the puzzle
+set(grid[0],9)
+set(grid[5],8)
+set(grid[9],1)
+set(grid[10],3)
+set(grid[14],9)
+set(grid[16],7)
+...
+set(grid[71],6)
+set(grid[75],9)
+set(grid[80],1)
+
+__code_start__
+
+// print the welcome message
+print(welcome)
+
+// get input
+input(flag[0])
+input(flag[1])
+input(flag[2])
+input(flag[3])
+input(flag[4])
+input(flag[5])
+...
+input(flag[46])
+input(flag[47])
+input(flag[48])
+input(flag[49])
+
+// transfer chars in the flag into the grids
+
+long_transfer(flag[0],grid[1])
+long_transfer(flag[1],grid[2])
+...
+long_transfer(flag[47],grid[77])
+long_transfer(flag[48],grid[78])
+long_transfer(flag[49],grid[79])
+
+// xor with xor_table, which is introduced 
+//   for generating different flags to different teams
+
+grid[1] = grid[1] ^ xor_table[0]
+grid[2] = grid[2] ^ xor_table[1]
+grid[3] = grid[3] ^ xor_table[2]
+grid[4] = grid[4] ^ xor_table[3]
+grid[6] = grid[6] ^ xor_table[4]
+grid[7] = grid[7] ^ xor_table[5]
+...
+grid[77] = grid[77] ^ xor_table[47]
+grid[78] = grid[78] ^ xor_table[48]
+grid[79] = grid[79] ^ xor_table[49]
+
+// verify the sudoku game
+
+// rows
+jmp _label_wrong if grid[4] == grid[5]
+jmp _label_wrong if grid[4] == grid[6]
+jmp _label_wrong if grid[4] == grid[7]
+...
+jmp _label_wrong if grid[3] == grid[7]
+jmp _label_wrong if grid[3] == grid[8]
+
+// columns
+jmp _label_wrong if grid[0] == grid[9]
+jmp _label_wrong if grid[0] == grid[18]
+jmp _label_wrong if grid[0] == grid[27]
+...
+jmp _label_wrong if grid[62] == grid[80]
+jmp _label_wrong if grid[71] == grid[80]
+
+// subgrids
+jmp _label_wrong if grid[0] == grid[1]
+jmp _label_wrong if grid[0] == grid[2]
+jmp _label_wrong if grid[0] == grid[9]
+jmp _label_wrong if grid[0] == grid[10]
+...
+jmp _label_wrong if grid[78] == grid[79]
+jmp _label_wrong if grid[78] == grid[80]
+jmp _label_wrong if grid[79] == grid[80]
+
+// check range
+
+jmp _label_wrong if outofnumbers(grid[1])
+jmp _label_wrong if outofnumbers(grid[2])
+jmp _label_wrong if outofnumbers(grid[3])
+jmp _label_wrong if outofnumbers(grid[4])
+...
+jmp _label_wrong if outofnumbers(grid[76])
+jmp _label_wrong if outofnumbers(grid[77])
+jmp _label_wrong if outofnumbers(grid[78])
+jmp _label_wrong if outofnumbers(grid[79])
+
+_label_correct:
+print(correct)
+return
+
+_label_wrong:
+print(wrong)
+return
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I wrote an assembler for this assembly, which was used to generate the final challenge that the players got. The assembler wasn’t open-sourced since it’s ugly.&lt;/p&gt;
+
+&lt;p&gt;During the competition, due to the negligence of myself, the implementation of the &lt;code class=&quot;highlighter-rouge&quot;&gt;outofnumbers (var)&lt;/code&gt; function was incorrectly written as &lt;code class=&quot;highlighter-rouge&quot;&gt;return var not in range (10)&lt;/code&gt;, resulting in multiple solutions. Since the target Sudoku should only be filled with 1 ~ 9, the correct implementation should be &lt;code class=&quot;highlighter-rouge&quot;&gt;return var not in range (1, 10)&lt;/code&gt;. This was my fault, and I had to update the challenge with a fixed one during the competition.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Sudoku Map&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://camo.githubusercontent.com/9e3d18179573b913f906045e17194334fe646330e821fc86032756fece3958a2/68747470733a2f2f692e696d6775722e636f6d2f50727a6d7945752e706e67&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;To solve this challenge, there is no need to simplify all the logical operations. Since there is no complicated loop in the chal’s actual control flow, we can find conditions that prevent the control flow from jumping to the part which outputs “Sorry” through simple control flow tracing and symbolic analysis. Finally, we can use an SMT solver to solve the constraints that we get through the previous analysis(That’s how ThinerDAS solved this challenge).&lt;/p&gt;
+
+&lt;p&gt;Flag: d3ctf{g5lk9t28zz47y3l6m2kosbajd2vk9e2dwghxgfktcki}&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Referenceable solution script: &lt;a href=&quot;https://github.com/0h2o/D3CTF_Rev/blob/master/AncientGameV2/sol.py&quot;&gt;sol.py&lt;/a&gt; by &lt;a href=&quot;https://github.com/byaidu&quot;&gt;Byaidu&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The source code of this challenge(not fully open-sourced) and a duplicate of this post are uploaded to GitHub, check them out at: &lt;a href=&quot;https://github.com/yype/D3CTF_Rev/tree/master/AncientGameV2&quot; target=&quot;_blank&quot;&gt;https://github.com/yype/D3CTF_Rev/tree/master/AncientGameV2&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;more&quot;&gt;More..&lt;/h2&gt;
+
+&lt;p&gt;I’ve always found OISC quite interesting to me. This challenge was just a demo of one of my ideas, maybe I will do some extra work related to OISC in the upcoming future.&lt;/p&gt;
+</content>
+ </entry>
+ 
+
+</feed>

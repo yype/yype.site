@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://yype.site/sitemap.xml
