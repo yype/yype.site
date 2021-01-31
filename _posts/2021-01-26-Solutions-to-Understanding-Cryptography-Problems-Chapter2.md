@@ -222,7 +222,7 @@ $$
 s_{i+256}=\sum_{j=0}^{255}{p_j\cdot s_{i+j}}, i=0,1,...,255
 $$
 
-This actually represents 256 linearly independent formulae, which contain 256 unknown variables $p_0,p_1,...,p_255$. This system can be easily solved using Gaussian elimination, matrix inversion or any other algorithm for solving systems of linear equations.
+This actually represents 256 linearly independent formulae, which contain 256 unknown variables $p_0,p_1,...,p_{255}$. This system can be easily solved using Gaussian elimination, matrix inversion or any other algorithm for solving systems of linear equations.
 
 (3.a) The key is $p_0,p_1,...,p_{255}$.
 

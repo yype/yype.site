@@ -4,7 +4,7 @@
  <title>yype.site</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2021-01-30T11:04:49+08:00</updated>
+ <updated>2021-01-31T11:07:11+08:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name></name>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Solutions to Understanding Cryptography Problems - Chapter 2</title>
-   <link href="http://localhost:4000/2021/01/26/answers-to-understanding-cryptography-problems-chapter2"/>
+   <link href="http://localhost:4000/2021/01/26/solutions-to-understanding-cryptography-problems-chapter2"/>
    <updated>2021-01-26T00:00:00+08:00</updated>
-   <id>http://localhost:4000/2021/01/26/Answers-to-Understanding-Cryptography-Problems-Chapter2</id>
+   <id>http://localhost:4000/2021/01/26/Solutions-to-Understanding-Cryptography-Problems-Chapter2</id>
    <content type="html">&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#intro&quot; id=&quot;markdown-toc-intro&quot;&gt;Intro&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#problems&quot; id=&quot;markdown-toc-problems&quot;&gt;Problems&lt;/a&gt;    &lt;ul&gt;
@@ -232,7 +232,7 @@ init            len(seq)
 
 \[s_{i+256}=\sum_{j=0}^{255}{p_j\cdot s_{i+j}}, i=0,1,...,255\]
 
-&lt;p&gt;This actually represents 256 linearly independent formulae, which contain 256 unknown variables $p_0,p_1,…,p_255$. This system can be easily solved using Gaussian elimination, matrix inversion or any other algorithm for solving systems of linear equations.&lt;/p&gt;
+&lt;p&gt;This actually represents 256 linearly independent formulae, which contain 256 unknown variables $p_0,p_1,…,p_{255}$. This system can be easily solved using Gaussian elimination, matrix inversion or any other algorithm for solving systems of linear equations.&lt;/p&gt;
 
 &lt;p&gt;(3.a) The key is $p_0,p_1,…,p_{255}$.&lt;/p&gt;
 
@@ -456,9 +456,9 @@ wpiwombat
  
  <entry>
    <title>Solutions to Understanding Cryptography Problems - Chapter 1</title>
-   <link href="http://localhost:4000/2021/01/25/answers-to-understanding-cryptography-problems-chapter1"/>
+   <link href="http://localhost:4000/2021/01/25/solutions-to-understanding-cryptography-problems-chapter1"/>
    <updated>2021-01-25T00:00:00+08:00</updated>
-   <id>http://localhost:4000/2021/01/25/Answers-to-Understanding-Cryptography-Problems-Chapter1</id>
+   <id>http://localhost:4000/2021/01/25/Solutions-to-Understanding-Cryptography-Problems-Chapter1</id>
    <content type="html">&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#intro&quot; id=&quot;markdown-toc-intro&quot;&gt;Intro&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#problems&quot; id=&quot;markdown-toc-problems&quot;&gt;Problems&lt;/a&gt;    &lt;ul&gt;
